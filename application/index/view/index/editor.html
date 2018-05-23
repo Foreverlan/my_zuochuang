@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>做创网</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta content="telephone=no" name="format-detection" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <meta name="full-screen" content="yes">
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/login.css" />
+        <link href="__STATIC__/zuochuang/css/font-awesome.css" rel="stylesheet">
+        <style>
+            body {
+                height: 900px;
+            }
+            a, a:hover, a:focus {
+                text-decoration: none;
+                outline: none;
+            }
+            textarea, textarea:hover, textarea:focus {
+                text-decoration: none;
+                outline: none;
+            }
+            .left {
+                width: 60px;
+                height: 60px;
+                float: left;
+            }
+            .left img {
+                padding: 10px;
+            }
+            .right {
+                width: 170px;
+                height: 60px;
+                float: right;
+            }
+            .title {
+                height: 60px;
+                margin: 0 170px 0 60px;
+                position: relative;
+            }
+            .title-note{
+                position:absolute; font-size:30px; top:20px; padding:5px; font-weight:900;
+                color:#777;
+            }
+            .title_content {
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                font-size: 20px;
+                font-weight: 800;
+                margin-top: 15px;
+
+            }
+            .main {
+                margin: 100px 0 0 0;
+            }
+            .issue {
+                float: left;
+                width: 60%;
+                line-height: 60px;
+            }
+            .more {
+                float: right;
+                width: 40%;
+                font-size: 10px;
+                line-height: 60px;
+                position: relative;
+                text-align: center;
+            }
+            .thumImg{
+                /*width:100%; height:100px; text-align:center; top:40%;font-size:30px; position:absolute;color:#bbb; z-index:9;*/
+                width:100%;
+                height:100%;
+                text-align:center;
+                z-index:9;
+                position:absolute;
+                
+                color:#bbb;
+                line-height:200px;
+            }
+            .thumImg1{
+                z-index:9;
+                position:absolute;
+                height:40px;
+                color:#bbb;
+                background: black;
+                bottom:0;
+                right:0; 
+                text-align: center;
+            }
+            .cover {
+                text-align: center; 
+                vertical-align: middle;
+                position: relative;
+            }
+            
+            .write-title {
+                width: 100%;
+                margin: 20px auto;
+                font-size: 30px;
+                font-weight: 900;
+                overflow-y: hidden;
+                padding: 5px;
+                resize: none;
+                border-color: transparent;
+                position:relative;
+                border:none;
+                outline:none;
+            }
+            .editor-bar {
+                z-index: 100;
+                min-height: 40px;
+                background: white;
+
+            }
+            .ico-box {
+                display: inline-block;
+            }
+            button {
+                border: none;
+                outline: none;
+                margin-top: 4px;
+            }
+            .ico-box i {
+                font-size: 16px;
+            }
+            .editor {
+                overflow: auto;
+                border: none;
+                min-height: 450px;
+                padding: 0.5em;
+                position: relative;
+                outline: none;
+                z-index: 99;
+                background: none;
+                color:black;
+
+            }
+            .note {
+                position: absolute;
+                line-height: 20px;
+                padding: 0.5em;
+                color: #bbb;
+            }
+            .affix {
+                top: 60px;
+            }
+            textarea::-webkit-input-placeholder {
+                color:#bbb;
+            }
+            textarea::-moz-placeholder { 
+                color:#bbb;
+            }
+            textarea:-moz-placeholder {    
+                color:#bbb;
+            }
+            textarea:-ms-input-placeholder {
+                color:#bbb;
+            }
+            @media screen and (max-width: 768px) {
+                .title_content {
+                    text-align: inherit;
+                    padding-left: 15px;
+                    border-left: 1px solid #ccc;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar-fixed-top bottom_line bg_white">
+            <div class="left"> <img src="__STATIC__/zuochuang/img/logo1.png" class="img-responsive center-block"> </div>
+            <div class="right">
+                <div class="issue">
+                    <input type="button"  value="发布"  class="btn btn-warning form-control text-center" id="fabu">
+                </div>
+                <div class="more" id="more"> <span><a href="#"> <i class="fa fa-circle-o"  ></i> <i class="fa fa-circle-o"  ></i> <i class="fa fa-circle-o"  ></i></a> </span>
+                    <div class="popup_more" id="more_box"> <span><em></em></span>
+                        <div class="list_box  pl20" style="text-align:start; "><i class="glyphicon glyphicon-floppy-save fa-fw"></i>保存草稿</div>
+                        <div class="list_box pl20" style="text-align:start; "><i class="glyphicon glyphicon-inbox fa-fw"></i>我的草稿<i class="badge ml5 mt-3">17</i></div>
+                        <hr class="hr_cc mt1 mb1">
+                        <div class="list_box mt1 text-center">返回社区</div>
+                    </div>
+                </div>
+            </div>
+            <div class="title">
+                <div class="title_content">写文章</div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2  col-md-6 col-md-offset-3 pickfiles" >
+
+                <div class="row">
+                    <form id="input_img">
+                    <input  type="file" onchange="preview(this)" style="position:absolute; width: 100%; height: 100%; z-index: 10; opacity: 0;" accept=".jpeg, .jpg, .png"  >
+                    </form>
+                    <div class="cover" id="cover"> 
+                        <div class="thumImg"><i class="fa fa-camera fa-2x"></i></div>
+                        <img style="width: 100%;height: 200px;" src="__STATIC__/zuochuang/img/write-cover.jpg"  class="img-responsive" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2  col-md-6 col-md-offset-3" >
+                <div class="row">
+                    <div  class="title-note" id="title-note" > <font color="#bbb">在这里输入文章标题</font> </div>
+                    <div  class='write-title' id='write-title' contenteditable="true"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2  col-md-6 col-md-offset-3 bottom_line top_line editor-bar" data-spy="affix" data-offset-top="332" >
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="撤消（Ctrl + Z）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-rotate-left"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="粗体（Ctrl + B）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-bold" ></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="斜体（Ctrl + I）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-italic"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="标题（Ctrl + ALT + 1）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-header"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="左对齐 （Ctrl + L）">
+                    <button class=" btn-default btn-sm"> <i class="glyphicon glyphicon-align-left"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="居中对齐 （Ctrl + E）">
+                    <button class=" btn-default btn-sm"> <i class="glyphicon glyphicon-align-center"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="右对齐 （Ctrl + R）">
+                    <button class=" btn-default btn-sm"> <i class="glyphicon glyphicon-align-right"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="两端对齐 （Ctrl + J）">
+                    <button class=" btn-default btn-sm"> <i class="glyphicon glyphicon-align-justify"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="引用块（Ctrl + Shift + U）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-quote-left"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="代码块（Ctrl + Alt + C）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-code"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="有序列表（Ctrl + Shift + 7）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-list-ol"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="无序列表（Ctrl + Shift + 8）">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-list-ul"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="表格">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-table"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="上传图片">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-image"></i></button>
+                </div>
+                <div class="ico-box" data-placement="bottom" data-toggle="tooltip"  title="上传视频">
+                    <button class=" btn-default btn-sm"> <i class="fa fa-video-camera"></i></button>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2  col-md-6 col-md-offset-3 mt5">
+                <div class="row">
+                    <div id="note" class="note"> <font color="#777">在这里输入文章内容</font> </div>
+                    <div id='editor' class='editor' contenteditable="true"></div>
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i>文章最短不能少于 10 个字符。</div>
+                </div>
+            </div>
+        </div>
+        <div id="back-to-top"  class="back-to-top "></div>
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/jquery.min.js"></script> 
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/bootstrap.min.js"></script> 
+        <script src="__STATIC__/js/layer/layer.js"></script> 
+        <script type="text/javascript">
+                            img_msg = null;
+            
+                            $(document).ready(function () {
+                                $(window).scroll(function () {
+                                    if ($(this).scrollTop() > 0) {
+                                        $('#back-to-top').fadeIn();
+                                    } else {
+                                        $('#back-to-top').fadeOut();
+                                    }
+                                });
+
+                                // scroll body to 0px on click
+                                $('#back-to-top').click(function () {
+                                    $('body,html').animate({
+                                        scrollTop: 0
+                                    }, 500);
+                                    return false;
+                                });
+
+                            });
+
+                            var time = null;
+                            var oMore = document.getElementById('more');
+                            var oMoreBox = document.getElementById('more_box');
+                            oMore.onmouseover = function ()
+                            {
+                                console.log("jingru");
+                                clearTimeout(timer);
+                                oMoreBox.style.display = 'block';
+                            };
+                            oMore.onmouseout = function ()
+                            {
+                                console.log("yichu");
+                                timer = setTimeout(function () {
+                                    oMoreBox.style.display = 'none';
+                                }, 500);
+                            };
+
+                            $(function () {
+                                $("[data-toggle='tooltip']").tooltip();
+                            });
+
+                            var oEditor = document.getElementById('editor');
+                            var oNote = document.getElementById('note');
+
+                            oEditor.onfocus = function ()
+                            {
+                                oNote.style.display = 'none';
+                            }
+
+                            oEditor.onblur = function ()
+                            {
+                                var content = oEditor.innerHTML;
+                                console.log(content);
+                                if (content == '' || content == null || content.length == 0)
+                                {
+                                    oNote.style.display = 'block';
+                                }
+
+                            }
+
+                            var oWriteTitle = document.getElementById('write-title');
+                            var oTitleNote = document.getElementById('title-note');
+
+                            oWriteTitle.onfocus = function ()
+                            {
+                                oTitleNote.style.display = 'none';
+                            }
+
+                            oWriteTitle.onblur = function ()
+                            {
+                                var content = oWriteTitle.innerHTML;
+                                console.log(content);
+                                if (content == '' || content == null || content.length == 0)
+                                {
+                                    oTitleNote.style.display = 'block';
+                                }
+
+                            }
+
+                            $('#fabu').click(function () {
+                                var title = $('#write-title').text();
+                                var content = $('#editor').text();
+                                var content_html = $('#editor').html();
+                                
+                                var section = {$section};
+
+                                if ($.trim(title) == '' || $.trim(content) == '')
+                                {
+                                    layer.open({
+                                        title: '提示',
+                                        icon: 0,
+                                        content: '标题或内容不能为空！'
+                                    });
+                                } else
+                                {
+                                    
+                                    $.ajax({
+                                        url: '/index.php/index/Index/editor',
+                                        type: 'post',
+                                        dataType: 'json',
+                                        data: {title: title, content: content, content_html: content_html, section: section,img:img_msg},
+                                        success: function (res) {
+                                            console.log(res)
+                                            if (res.status == 1)
+                                            {
+                                                layer.open({
+                                                    title: '提示',
+                                                    icon: 1,
+                                                    content: res.msg,
+                                                });
+                                            } else
+                                            {
+                                                layer.open({
+                                                    title: '提示',
+                                                    icon: 2,
+                                                    content: res.msg,
+                                                });
+                                            }
+                                        },
+                                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                            layer.open({
+                                                title: '提示',
+                                                icon: 2,
+                                                content: '网络失败，请刷新页面后重试'
+                                            });
+                                        }
+                                    })
+                                }
+                            });
+
+                            function preview(file) {
+                                 
+                                
+                                if (file.files && file.files[0]) {
+                                    var reader = new FileReader();
+                                    var img_size = parseInt((file.files[0].size)/1024);
+                                    if(img_size >2000)
+                                    {
+                                        layer.open({
+                                                title: '提示',
+                                                icon: 2,
+                                                content: "上传图片大于2M",
+                                            });
+                                        return;
+                                    }
+                                    reader.onload = function (evt) {
+                                        img_msg = evt.target.result;
+                                        $("#cover").html('<div class="thumImg1"><div class="ico-box"><i class="fa fa-camera center-block"></i></div><div class="ico-box"> <i class="fa fa-trash center-block"></i></div></div><img class="img-responsive" src="' + evt.target.result + '"  />');
+                                    }
+                                    reader.readAsDataURL(file.files[0]);
+                                } 
+                                
+                            }
+
+
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--360浏览器优先以webkit内核解析-->
+
+        <title>主页</title>
+
+
+        <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="__STATIC__/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+        <link href="__STATIC__/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+        <link href="__STATIC__/css/animate.css" rel="stylesheet">
+        <link href="__STATIC__/css/style.css?v=4.1.0" rel="stylesheet">
+        <link href="__STATIC__/css/bootstrap-table.min.css" rel="stylesheet">
+    </head>
+
+    <body class="gray-bg" >
+        <div class="wrapper wrapper-content">
+            <div class="row">
+
+
+                <form action="{:url('Admin/userList')}" method="post">
+                    <div class="col-xs-3">
+                        <div class="input-group" style="margin-left:20px; font-size:14px;">
+                            <input type="text" class="form-control"  name="keywords">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">搜索</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-xs-offset-6" >
+                        <a style="margin-right:20px;" href="{:url('admin/Admin/userInfo')}" class="J_menuItem btn btn-primary pull-right"><i class="fa fa-plus"></i>添加管理员</a>
+                    </div>		          
+                </form>
+
+                <div class="col-sm-12">
+                    <div  class="table-responsive" data-mobile-responsive="true" style="margin:20px; font-size:14px;">
+                        <table  data-toggle="table" data-query-params="queryParams" data-mobile-responsive="true" data-pagination="true" data-icon-size="outline">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>用户名</th>
+                                    <th>真实姓名</th>
+                                    <th>注册时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {volist name="list" id="vo"}
+                                <tr>
+                                    <td>{$vo.Id}</td>
+                                    <td>{$vo.user_name}</td>
+                                    <td>{$vo.real_name}</td>
+                                    <td>{$vo.register_time}</td>
+                                    <td><a class="btn btn-primary " href="{:url
+                                           ('admin/Admin/userInfo',array('Id'=>$vo.Id))}"><i class="fa fa-pencil J_menuItem"></i></a>
+                                        {if condition="$vo['Id'] gt 1"}
+                                        <a class="btn btn-danger" 
+                                           href="javascript:void(0)" data-url="{:url('admin/Admin/adminHandle')}" data-id="{$vo.Id}" 
+                                           onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- 全局js --> 
+        <script src="__STATIC__/js/jQuery-2.1.4.min.js"></script> 
+        <script src="__STATIC__/js/bootstrap.min.js"></script> 
+        <script src="__STATIC__/js/plugins/layer/layer.min.js"></script> 
+        <!-- Flot --> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.js"></script> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.tooltip.min.js"></script> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.resize.js"></script> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.pie.js"></script> 
+        <!-- 自定义js --> 
+        <script src="__STATIC__/js/content.js"></script> 
+
+        <script src="__STATIC__/js/bootstrap-table.min.js"></script> 
+        <script src="__STATIC__/js/bootstrap-table-mobile.min.js"></script> 
+        <script src="__STATIC__/js/bootstrap-table-zh-CN.min.js"></script> 
+
+        <script>
+                                               function delfun(obj) {
+                                                   if (confirm('确认删除')) {
+                                                       $.ajax({
+                                                           type: 'post',
+                                                           url: $(obj).attr('data-url'),
+                                                           data: {act: 'del', Id: $(obj).attr('data-id')},
+                                                           dataType: 'json',
+                                                           success: function (data) {
+                                                               if (data == 1) {
+                                                                   $(obj).parent().parent().remove();
+                                                               } else {
+                                                                   layer.alert(data, {icon: 2});  
+                                                                   layer.closeAll();
+                                                               }
+                                                           }
+                                                       })
+                                                   }
+                                                   return false;
+                                               }
+        </script>
+
+
+
+
+    </body>
+</html>

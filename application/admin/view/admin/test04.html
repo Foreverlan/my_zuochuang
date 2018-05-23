@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>
+<title>hello </title>
+</head>
+<body>
+<foreach name="list" item="data" key='k'>  
+    {$k['Id']}-----{$k['user_name']}<br/>  
+</foreach> 
+    <for start="1" end="10" comparison="elt" name="list">  
+    {$list}    
+</for> 
+</body>
+</html>

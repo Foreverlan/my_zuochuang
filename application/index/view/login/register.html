@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>做创网</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta name="full-screen" content="yes">
+<link rel="stylesheet" href="__STATIC__/zuochuang/css/bootstrap.min.css" />
+<link rel="stylesheet" href="__STATIC__/zuochuang/css/common.css" />
+<link rel="stylesheet" href="__STATIC__/zuochuang/css/style.css" />
+<link rel="stylesheet" href="__STATIC__/zuochuang/css/login.css" />
+<link href="__STATIC__/zuochuang/css/font-awesome.css" rel="stylesheet">
+</head>
+<body onLoad="createCode()">
+<div id="wrapper">
+    <div class="overlay">
+        <div id="sidebar-wrapper" class="sidebar-wrapper">
+            <div class="header-search">
+                <form action="#" >
+                    <input type="text" placeholder="搜索相关信息">
+                    <span class="glyphicon glyphicon-search"></span>
+                </form>
+            </div>
+            <nav class="navbar" role="navigation">
+                <ul>
+                    <li><a href="{:url('index/Index/index')}">社区</a></li>
+                    <li><a href="#">团队</a></li>
+                    <li><a href="#">商城</a></li>
+                    <li><a href="#">登陆</a></li>
+                    <li><a href="#">注册</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <header class="navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
+            <div class="logo"></div>
+            <div class="header-nav">
+                <ul>
+                    <li class="active"><a href="{:url('index/Index/index')}">社区</a></li>
+                    <li><a href="#">团队</a></li>
+                    <li><a href="#">商城</a></li>
+                </ul>
+            </div>
+            <div class="header-search">
+                <form action="#">
+                    <input type="text"  placeholder="搜索相关信息">
+                    <span class="glyphicon glyphicon-search"></span>
+                </form>
+            </div>
+            <div class="header-user-nologin" ><a href="regist.html"> <span class="toregister">注册</span> </a> <span class="line">|</span><a href="#" data-toggle="modal" data-target="#myModal"> <span class="tologin" >登陆</span></a> </div>
+        </div>
+    </header>
+<div id="main">
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="content_homefeed mt70 mb47" >
+                        <div class="content_homefeed_top">
+                            <div class="line_left col-xs-2 col-lg-2"></div>
+                            <div class="line_center col-xs-2 col-lg-2"></div>
+                            <div class="line_right col-xs-2 col-lg-2"></div>
+                            <div class="line_left col-xs-2 col-lg-2"></div>
+                            <div class="line_center col-xs-2 col-lg-2"></div>
+                            <div class="line_right col-xs-2 col-lg-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 right_line" style="min-height:350px;"> 
+                                
+                                <div class="register_title text-center">
+                                    <h1>做创注册</h1>
+                                    <div class="row">
+                                        <div class="line_center col-xs-6 col-xs-offset-3"></div>
+                                        <div class="col-xs-12 mt30" >
+                                            <form class="form-horizontal" method="post" action="{:url('index/Login/register')}">
+                                                <div class="form-group">
+                                                    <div class="col-xs-8 col-xs-offset-2">
+                                                        <input type="text" id="user_name" name="user_name" placeholder="做创号/用户名" class="form-control">
+                                                        <input type="password" id="user_password" name="user_password" placeholder="密码" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-8 col-xs-offset-2" >
+                                                        <div class="row">
+                                                            <div class="col-xs-7">
+                                                                <input type="text" id="vertify" name="vertify" class="form-control"  placeholder="请输入验证码">
+                                                            </div>
+                                                            <div class="col-xs-5"> 
+                                                                <input type="button"  id="createCode" name="createCode"  /> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-8 col-xs-offset-2">
+                                                        <input type="button" name="register" id="register" class="form-control btn btn-warning"  value="注册">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mt-10">
+                                                    <div class="col-xs-8 col-xs-offset-2 text-left" >注册即代表你同意<a href="#">《做创协议》 </a></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="register_success text-center" style="display:none;">
+                                    <div class="row">
+                                        <div class="col-xs-12 "> <span class="ico_block"> <i class="glyphicon glyphicon-ok-sign"></i> </span>
+                                            <h1>注册成功</h1>
+                                            <h1 class="zhanghao"></h1>
+                                            <h6 style="color:red;">3天内未登陆，该做创号将会被回收。</h6>
+                                        </div>
+                                        <div class="col-xs-12 mt30 mb47">
+                                            <div class="form-group">
+                                                <div class="col-xs-8 col-xs-offset-2">
+                                                    <a  href="{:url('index/Login/login')}" name="" class="form-control btn btn-info" id="" >立即登录</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="show_title">
+                                    <div class="row">
+                                        <div class="col-xs-8 col-xs-offset-2 text-left" >
+                                            <h3>使用第三方帐号登陆</h3>
+                                        </div>
+                                        <div class="col-xs-8 col-xs-offset-3" >
+                                            <div class="login_box"> <span><img src="__STATIC__/zuochuang/img/ico08.png"></span> <span><img src="__STATIC__/zuochuang/img/ico09.png"></span> <span><img src="__STATIC__/zuochuang/img/ico10.png"></span> </div>
+                                        </div>
+                                        <div class="col-xs-10 col-xs-offset-1 mt15">
+                                            <hr>
+                                        </div>
+                                        <div class="col-xs-12 text-center" style="display:block;" id="register_msg" > 已有帐号？请<a href="{:url('index/Login/login')}" id="toLogin">登录</a> </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <ul>
+                <li><a href="#">社区</a></li>
+                <li><a href="#">团队</a></li>
+                <li><a href="#">商城</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">个人中心</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-lg-9">
+                    <p> <span class="glyphicon glyphicon-earphone"></span> 全国客服热线：0760-86113668 </p>
+                    <p> <span class="glyphicon glyphicon-envelope"></span> 邮箱：zuochuang@xinxinggd.net </p>
+                    <p> <span class="glyphicon glyphicon-map-marker"></span> 公司地址：广东省中山市富湾东路8号4卡 </p>
+                    <p>广东信兴科技有限公司    Copyright 2017 All Right Reserved 粤ICP备06016855号-8</p>
+                </div>
+                <div class="col-lg-3">
+                    <div class="icon-box"> <span><img src="__STATIC__/zuochuang/img/ico01.png"></span> <span><img src="__STATIC__/zuochuang/img/ico02.png"></span> <span><img src="__STATIC__/zuochuang/img/ico03.png"></span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<script type="text/javascript" src="__STATIC__/zuochuang/js/jquery.min.js"></script> 
+<script type="text/javascript" src="__STATIC__/zuochuang/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="__STATIC__/zuochuang/js/bar.js"></script> 
+<script src="__STATIC__/js/layer/layer.js"></script> 
+<script type="text/javascript">
+            var code =null;
+            function createCode() 
+            {
+ 		code = "";
+ 		var codeLength = 4; //验证码的长度
+ 		var checkCode = document.getElementById("createCode");
+                
+ 		var codeChars = new Array(2,3,4,5,6,7,8,9, 
+      		'a','b','c','d','e','f','g','h','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z',
+      		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H','J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); 
+ 		for(var i = 0; i < codeLength; i++) 
+ 		{
+  			var charNum = Math.floor(Math.random() * 53);
+  			code += codeChars[charNum];
+ 		}
+
+ 		checkCode.value = code;
+ 		
+            } ;
+            
+            document.getElementById('createCode').onclick = function()
+            {
+                code = "";
+                var codeLength = 4; //验证码的长度
+ 		var checkCode = document.getElementById("createCode");
+                
+ 		var codeChars = new Array(2,3,4,5,6,7,8,9, 
+      		'a','b','c','d','e','f','g','h','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z',
+      		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H','J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); 
+ 		for(var i = 0; i < codeLength; i++) 
+ 		{
+  			var charNum = Math.floor(Math.random() * 53);
+  			code += codeChars[charNum];
+ 		}
+
+ 		checkCode.value = code;
+            };
+            
+            document.getElementById('register').onclick =function() {
+                var username = $('#user_name').val();
+                var pwd = $('#user_password').val();
+                var vertify = $('#vertify').val().toUpperCase();
+                if (username == '' || pwd == '')
+                {
+                    layer.open({
+                        title: '提示',
+                        icon: 0,
+                        content: '用户名或密码不能为空！'
+                    });
+                }
+                else if(vertify == '')
+                {
+                    layer.open({
+                        title: '提示',
+                        icon: 0,
+                        content: '验证码不能为空！'
+                    });
+                }
+                else if(vertify != code.toUpperCase()) 
+                {
+ 			layer.open({
+                        title: '提示',
+                        icon: 0,
+                        content: '验证码不正确！'
+                    });
+ 		}
+                else
+                {
+                $.ajax({
+                    url:'/index.php/index/Login/register',
+                    type:'post',
+                    dataType:'json',
+                    data:{user_name:username,user_password:pwd},
+                    success:function(res){
+                        console.log(res)
+                        if(res.status == 1)
+                        {
+                            $('.register_title').css('display','none');
+                            $('.register_success').css('display','block');
+                            $('.zhanghao').html(res.zhanghao+'<i class="fa fa-file-text-o" style="margin-left:10px;"></i>');
+                        }
+                        else
+                        {
+                            layer.open({
+                                title: '提示',
+                                icon: 2,
+                                content: res.msg,
+                            });
+                        }
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        layer.open({
+                            title: '提示',
+                            icon: 2,
+                            content: '网络失败，请刷新页面后重试'
+                        });
+                    }
+                })
+            }
+            };
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<div class="overlay">
+    <div id="sidebar-wrapper" class="sidebar-wrapper">
+        <div class="header-user islogin">
+            <div class="user-img"><a href="{:url('index/Index/myself')}"> <img src="{$user.user_header}">
+                    <h1>{$user.user_nickName}</h1>
+                </a>
+            </div>
+        </div>
+        <div class="header-search">
+            <form action="#" >
+                <input type="text" placeholder="搜索相关信息">
+                <span class="glyphicon glyphicon-search"></span>
+            </form>
+        </div>
+        <nav class="navbar nologin" role="navigation">
+            <ul>
+                <li><a href="#">社区</a></li>
+                <li><a href="#">团队</a></li>
+                <li><a href="#">商城</a></li>
+                <li><a href="#">登陆</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+        </nav>
+        <nav class="navbar islogin" role="navigation">
+            <ul>
+                <li><a href="#">社区</a></li>
+                <li><a href="#">团队</a></li>
+                <li><a href="#">商城</a></li>
+                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">短信<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">@我的</a></li>
+                        <li><a href="#">评论</a></li>
+                        <li><a href="#">点赞</a></li>
+                        <li><a href="#">私信</a></li>
+                        <li><a href="#">群消息</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{:url('index/Index/accSetting')}">账号设置</a></li>
+                        <li><a href="#">安全设置</a></li>
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<header class="navbar-fixed-top">
+    <div class="container">
+        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
+        <div class="logo"></div>
+        <div class="header-nav">
+            <ul>
+                <li class="active"><a href="{:url('index/Index/index')}">社区</a></li>
+                <li><a href="#">团队</a></li>
+                <li><a href="#">商城</a></li>
+            </ul>
+        </div>
+        <div class="header-search">
+            <form action="#">
+                <input type="text"  placeholder="搜索相关信息">
+                <span class="glyphicon glyphicon-search"></span>
+            </form>
+        </div>
+        <div class="header-user-nologin nologin" >
+            <a href="{:url('index/Login/register')}"> <span class="toregister">注册</span> </a> 
+            <span class="line">|</span>
+            <a href="#" data-toggle="modal" data-target="#myModal"> <span class="tologin" >登陆</span></a> 
+        </div>
+        <div class="header-user islogin">
+            <div class="user-img"> <a href="{:url('index/Index/myself')}"><img src="{$user.user_header}">
+                    <h1>{$user.user_nickName}</h1>
+                </a> </div>
+            <span class="line">|</span> <span class="email"> <a href="#" id="email" style="color:#ccc;"> <span class="glyphicon glyphicon-envelope"></span> </a>
+                <div class="popup_email" id="email_box"> <span><em></em></span>
+                    <div class="list_box pl20">@我的</div>
+                    <div class="list_box pl20">评论</div>
+                    <div class="list_box pl20">点赞</div>
+                    <hr class="hr_ee mt1 mb1">
+                    <div class="list_box pl20">私信</div>
+                    <div class="list_box pl20">群消息</div>
+                    <hr class="hr_cc mt1 mb1">
+                    <div class="list_box text-center mt1">消息设置</div>
+                </div>
+            </span> <span class="setting"> <a href="#" id="setting" style="color:#ccc;"> <span class="glyphicon glyphicon-cog"></span> </a>
+                <div class="popup_setting" id="setting_box"> <span><em></em></span>
+                    <div class="list_box pl20"><a href="{:url('index/Index/accSetting')}">账号设置</a></div>
+                    <div class="list_box pl20">安全设置</div>
+                    <hr class="hr_ee mt1 mb1">
+                    <div class="list_box pl20">隐私设置</div>
+                    <div class="list_box pl20">消息设置</div>
+                    <div class="list_box pl20">屏蔽设置</div>
+                    <div class="list_box pl20">编好设置</div>
+                    <hr class="hr_ee mt1 mb1">
+                    <div class="list_box pl20">账号绑定</div>
+                    <hr class="hr_cc mt1 mb1">
+                    <div class="list_box text-center mt1"><a href="{:url('index/Index/index',array('exit'=>1))}">退出</a></div>
+                </div>
+            </span> 
+        </div>
+    </div>
+</header>

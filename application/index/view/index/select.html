@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <title>添加资产设备</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="__STATIC__/xinweiyun/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+        <link href="__STATIC__/xinweiyun/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+        <link href="__STATIC__/xinweiyun/css/plugins/iCheck/custom.css" rel="stylesheet">
+        <link href="__STATIC__/xinweiyun/css/animate.css" rel="stylesheet">
+        <link href="__STATIC__/xinweiyun/css/style.css?v=4.1.0" rel="stylesheet">
+        <!-- alert -->
+        <script src="__STATIC__/xinweiyun/js/jquery.min.js?v=2.1.4"></script>
+        <link href="__STATIC__/xinweiyun/css/alert/alert.css" rel="stylesheet">
+        <script src='__STATIC__/xinweiyun/js/alert/shCore.js'></script>
+        <script src='__STATIC__/xinweiyun/js/alert/alert.min.js'></script>
+        <script src="__STATIC__/xinweiyun/js/alert/alert-api.js"></script>
+        <!-- searchSelection -->
+        <link rel="stylesheet" href="__STATIC__/xinweiyun/search/css/bootstrap-select.css">
+
+    </head>
+
+    <body class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content add_single">
+                <div class="row row-lg">
+                    <!-- 表单验证 -->
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title"><h5>添加资产设备</h5></div>
+                            <div class="ibox-content">
+                                <div class="form-horizontal m-t">
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label assetName-label">{$name}</label>
+                                            <div class="col-sm-5">
+                                                <input class="form-control assetName" type="text">
+                                                <span class="help-block m-b-none assetName_prompt"><i class="fa fa-info-circle"></i>资产名称必须填写</span>
+                                                <span class="help-block m-b-none assetName_caveat" style="color:red; display:none;"><i class="fa fa-times-circle"></i>请填写资产名称</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label supplierName-label">服务商</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker supplierName" data-live-search="true" title="选择服务商">
+                                                    <option value="1">未知</option>
+                                                    <option value="2">广东信兴科技有限公司</option>
+                                                    <option value="3">中山市盈训电脑有限公司</option>
+                                                    <option value="4">一体机维修</option>
+                                                    <option value="5">中山诚顺机电科技有限公司</option>
+                                                    <option value="6">中山市五色鸟广告设计有限公司</option>
+                                                    <option value="7">全通教育</option>
+                                                </select>
+                                                <span class="help-block m-b-none supplierName_prompt"><i class="fa fa-info-circle"></i>服务商必须选择</span>
+                                                <span class="help-block m-b-none supplierName_caveat" style="color:red; display:none;"><i class="fa fa-times-circle"></i>请选择服务商</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label assetType-label">资产种类</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker assetType" data-live-search="true" title="选择资产种类">
+                                                    {volist name="list" id="vo"}                                                    
+                                                    {if condition="$vo['Id'] eq 1"}
+                                                        <option value="{$vo.Id}" selected >{$vo.data}</option> 
+                                                    {else /} 
+                                                        <option value="{$vo.Id}" >{$vo.data}</option> 
+                                                    {/if}
+                                                    
+                                                    {/volist}
+                                                </select>
+                                                <span class="help-block m-b-none assetType_prompt"><i class="fa fa-info-circle"></i>资产种类必须选择</span>
+                                                <span class="help-block m-b-none assetType_caveat" style="color:red; display:none;"><i class="fa fa-times-circle"></i>请选择资产种类</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label assetClass-label">资产类别</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker assetClass" data-live-search="false" title="选择资产类别">
+                                                    <option value="1">电教类</option>
+                                                    <option value="2">后勤类</option>
+                                                    <option value="3">其他类</option>
+                                                </select>
+                                                <span class="help-block m-b-none assetClass_prompt"><i class="fa fa-info-circle" style="margin-top:9px;"></i>资产类别必须选择</span>
+                                                <span class="help-block m-b-none assetClass_caveat" style="color:red; display:none;"><i class="fa fa-times-circle" style="margin-top:9px;"></i>请选择资产类别</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label roomName-label">存放场室</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker roomName" data-live-search="true" title="选择存放场室">
+                                                    <option value="1" >美术室</option>
+                                                    <option value="2" >书法室</option>
+                                                    <option value="3" >舞蹈室1</option>
+                                                    <option value="4" >舞蹈室2</option>
+                                                    <option value="5" >电子阅览室</option>
+                                                    <option value="6" >档案室</option>
+                                                    <option value="7" >团体心理辅导室</option>
+                                                    <option value="8" >心理咨询室</option>
+                                                    <option value="9" >会议室</option>
+                                                    <option value="10">校长室</option>
+                                                    <option value="11">专家室</option>
+                                                    <option value="12">校史室</option>
+                                                </select>
+                                                <span class="help-block m-b-none roomName_prompt"><i class="fa fa-info-circle"></i>场室必须选择</span>
+                                                <span class="help-block m-b-none roomName_caveat" style="color:red; display:none;"><i class="fa fa-times-circle"></i>请选择场室</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label">资产状态</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker assetStatus" data-live-search="false" title="选择资产状态">
+                                                    <option value="1">使用中</option>
+                                                    <option value="2">维修中</option>
+                                                    <option value="3">空闲</option>
+                                                    <option value="4">报废</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label">启用日期</label>
+                                            <div class="col-sm-5	">
+                                                <input id="Device_activation_date" class="laydate-icon form-control layer-date dateOfOpening">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label">保修期</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker warrantyPeriod" data-live-search="false" title="选择保修期">
+                                                    <option value="1">1年</option>
+                                                    <option value="2">2年</option>
+                                                    <option value="3">3年</option>
+                                                    <option value="4">4年</option>
+                                                    <option value="5">5年</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label">保修状态</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker warrantyStatus" data-live-search="false" title="选择报修状态">
+                                                    <option value="1">是</option>
+                                                    <option value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label">保序列号</label>
+                                            <div class="col-sm-5">
+                                                <input class="form-control serialNumber" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label">品牌</label>
+                                            <div class="col-sm-5">
+                                                <input class="form-control assetBrand" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label">资产型号</label>
+                                            <div class="col-sm-5">
+                                                <input class="form-control assetModel" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label">租用</label>
+                                            <div class="col-sm-5">
+                                                <select class="selectpicker rent" data-live-search="false" title="选择租用">
+                                                    <option value="1">是</option>
+                                                    <option value="2">否</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-2 control-label">备注</label>
+                                            <div class="col-sm-5">
+                                                <input class="form-control remarks" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 form-group">
+                                            <label class="col-sm-3 col-sm-offset-3 control-label">保修资料照片</label>
+                                            <div class="col-sm-5">
+                                                <div id="file-pretty">
+                                                    <div class="back-change">
+                                                        <input type="file" multiple="multiple" class="form-control warrantyInformationPicture" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-info alert-addDeviceInformation" type="button">添加设备</button>
+                                        <button type="button" class="btn btn-primary template_import">模版导入</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 表单验证 -->
+                </div>
+            </div>
+            <!-- 批量导入 -->
+            <div class="ibox-content batch_import" style="display:none;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title"><h5>批量添加服务商</h5></div>
+                            <div class="ibox-content">
+                                <div class="form-inline">
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <div id="file-pretty">
+                                                <div class="back-change" id="unitInformationFile">
+                                                    <input type="file" class="form-control asset_information_file" id="asset_information_file" accept=".xlsx">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 form-group">
+                                            <button type="button" class="btn btn-info alert-importAssetInformation">导入</button>
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                            <button type="button" class="btn btn-primary">下载模版</button>
+                                        </div>
+                                        <div class="col-sm-2 col-sm-offset-2 form-group">
+                                            <button type="button" class="btn btn-default return_asset_information">返回</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="row row-lg">
+                            <div class="col-sm-12">
+                                <!-- 添加导入资产信息流程说明 -->
+                                添加导入资产信息流程说明
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 批量导入 -->
+        </div>
+
+        <!-- 全局js -->
+        <script src="__STATIC__/xinweiyun/js/jquery.min.js?v=2.1.4"></script>
+        <script src="__STATIC__/xinweiyun/js/bootstrap.min.js?v=3.3.6"></script>
+        <!-- 自定义js -->
+        <script src="__STATIC__/xinweiyun/js/content.js?v=1.0.0"></script>
+        <!-- iCheck -->
+        <script src="__STATIC__/xinweiyun/js/plugins/iCheck/icheck.min.js"></script>
+        <!-- Data picker -->
+        <script src="__STATIC__/xinweiyun/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+        <!-- Prettyfile -->
+        <script src="__STATIC__/xinweiyun/js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+        <!-- Switchery -->
+        <script src="__STATIC__/xinweiyun/js/plugins/switchery/switchery.js"></script>
+        <!-- Color picker -->
+        <script src="__STATIC__/xinweiyun/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+        <!-- Clock picker -->
+        <script src="__STATIC__/xinweiyun/js/plugins/clockpicker/clockpicker.js"></script>
+        <!-- Image cropper -->
+        <script src="__STATIC__/xinweiyun/js/plugins/cropper/cropper.min.js"></script>
+        <!-- layerDate plugin javascript -->
+        <script src="__STATIC__/xinweiyun/js/plugins/layer/laydate/laydate.js"></script>
+        <!-- searchSelection -->
+        <script src="__STATIC__/xinweiyun/search/js/bootstrap-select.js"></script>
+        <!-- Chosen -->
+        <script src="__STATIC__/xinweiyun/js/plugins/chosen/chosen.jquery.js"></script>
+        <script>
+                                                           //外部js调用
+                                                           laydate({
+                                                               elem: '#Device_activation_date', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+                                                               event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+                                                           });
+
+                                                           $(document).ready(function () {
+                                                               /* oA = document.getElementsByTagName("a"); */
+                                                               $(".assetName").focus(function () {
+                                                                   $(".assetName").css("border-color", "#23B7E5"); // 边框变通过色
+                                                               });
+                                                               $(".assetName").blur(function () {
+                                                                   if ($(".assetName").val().trim() == "") { // 资产名称
+                                                                       $(".assetName").val(""); // 清空资产名称输入框
+                                                                       $(".assetName-label").css("color", "red"); // label变警告色
+                                                                       $(".assetName").css("border-color", "#CFDADD"); // 边框不变色
+                                                                       $(".assetName_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".assetName_caveat").css("display", ""); // 警告显示
+                                                                   } else {
+                                                                       $(".assetName-label").css("color", "#23B7E5"); // label变通过色
+                                                                       $(".assetName").css("border-color", "#CFDADD"); // 边框不变色
+                                                                       $(".assetName_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".assetName_caveat").css("display", "none"); // 警告隐藏
+                                                                   }
+                                                               });
+
+                                                               $(".supplierName").change(function () {
+                                                                   if ($(".supplierName option:selected").text() == "选择服务商") { // 服务商
+                                                                       $(".supplierName-label").css("color", "red"); // label变警告色
+                                                                       /* oA[0].style['border'] = '1px solid red'; // 边框变通过色 */
+                                                                       $(".supplierName_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".supplierName_caveat").css("display", ""); // 警告显示
+                                                                   } else {
+                                                                       $(".supplierName-label").css("color", "#23B7E5"); // label变通过色
+                                                                       /* oA[0].style['border'] = '1px solid #23B7E5'; // 边框变通过色 */
+                                                                       $(".supplierName_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".supplierName_caveat").css("display", "none"); // 警告隐藏
+                                                                   }
+                                                               });
+
+                                                               $(".assetType").change(function () {
+                                                                   if ($(".assetType option:selected").text() == "选择资产种类") { // 资产种类
+                                                                       $(".assetType-label ").css("color", "red"); // label变警告色
+                                                                       /* oA[1].style['border'] = '1px solid red'; // 边框变通过色 */
+                                                                       $(".assetType_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".assetType_caveat").css("display", ""); // 警告显示
+                                                                   } else {
+                                                                       $(".assetType-label").css("color", "#23B7E5"); // label变通过色
+                                                                       /* oA[1].style['border'] = '1px solid #23B7E5'; // 边框变通过色 */
+                                                                       $(".assetType_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".assetType_caveat").css("display", "none"); // 警告隐藏
+                                                                   }
+                                                               });
+
+                                                               $(".assetClass").change(function () {
+                                                                   if ($(".assetClass option:selected").text() == "选择资产类别") { // 资产类别
+                                                                       $(".assetClass-label").css("color", "red"); // label变警告色
+                                                                       /* $(".assetClass").css("border-color","red"); // 边框变警告色 */
+                                                                       $(".assetClass_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".assetClass_caveat").css("display", ""); // 警告显示
+                                                                   } else {
+                                                                       $(".assetClass-label").css("color", "#23B7E5"); // label变通过色
+                                                                       /* $(".assetClass").css("border-color","#23B7E5"); // 边框变通过色 */
+                                                                       $(".assetClass_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".assetClass_caveat").css("display", "none"); // 警告隐藏
+                                                                   }
+                                                               });
+
+                                                               $(".roomName").change(function () {
+                                                                   if ($(".roomName option:selected").text() == "选择存放场室") { // 存放场室
+                                                                       $(".roomName-label").css("color", "red"); // label变警告色
+                                                                       /* oA[2].style['border'] = '1px solid red'; // 边框变通过色 */
+                                                                       $(".roomName_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".roomName_caveat").css("display", ""); // 警告显示
+                                                                   } else {
+                                                                       $(".roomName-label").css("color", "#23B7E5"); // label变通过色
+                                                                       /* oA[2].style['border'] = '1px solid #23B7E5'; // 边框变通过色 */
+                                                                       $(".roomName_prompt").css("display", "none"); // 提示隐藏
+                                                                       $(".roomName_caveat").css("display", "none"); // 警告隐藏
+                                                                   }
+                                                               });
+
+                                                               // 模版导入按钮
+                                                               $(".template_import").click(function () {
+                                                                   $(".add_single").css("display", "none");
+                                                                   $(".batch_import").css("display", "");
+                                                               });
+                                                               // 模版导入界面返回按钮
+                                                               $(document).delegate(".return_asset_information", 'click', function () {
+                                                                   location.reload();/*页面刷新*/
+                                                               });
+
+                                                           });
+        </script>
+        <script src="js/demo/form-advanced-demo.js"></script>
+
+    </body>
+</html>

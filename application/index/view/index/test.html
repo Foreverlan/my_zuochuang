@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="utf-8" /> 
+        <title>获取class元素</title> 
+
+    </head> 
+    <body> 
+        <form action="{:url('index/Index/test')}" enctype="multipart/form-data" method="post">
+            <input type="file" name="img">
+            <p>{$date}</p>
+            <input type="submit" value="上传">
+        </form>
+            
+        <script>
+
+            var btn = document.getElementById("btn");
+            btn.onclick = function ()
+            {
+                alert(111);
+                var oDiv = document.getElementById("oDiv");
+                oDiv.innerHTML = '啊哈哈哈啊哈哈<div>阿哈哈哈</div><div><div class=" text-4" style="margin: 0px auto; padding: 0px; color: rgb(51, 51, 51); font-family: &quot;PingFang SC&quot;, &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif;">这是文章内容 &nbsp;这是文章内容<br>这是文章内容 &nbsp;这是文章内容这是文章内容 &nbsp; 这是文章 内容</div><div style="margin: 0px auto; padding: 0px; color: rgb(51, 51, 51); font-family: &quot;PingFang SC&quot;, &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif;">这是文章内容<br>这是文章内容1 &nbsp; 这是文章内容<br>这是文章内容 &nbsp; 这是文 章内容 &nbsp;<span style="background-color: initial;">这是文章内容 &nbsp; 这是文章内容&nbsp;</span></div></div><div style="margin: 0px auto; padding: 0px; color: rgb(51, 51, 51); font-family: &quot;PingFang SC&quot;, &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif;"><div class=" text-4" style="margin: 0px auto; padding: 0px;">这是文章内容 &nbsp;这是文章内容<br>这是文章内容 &nbsp;这是文章内容这是文章内容 &nbsp; 这是文章 内容</div><div style="margin: 0px auto; padding: 0px;">这是文章内容<br>这是文章内容1 &nbsp; 这是文章内容<br>这是文章内容 &nbsp; 这是文 章内容 &nbsp;<span style="background-color: initial;">这是文章内容 &nbsp; 这是文章内容&nbsp;</span></div></div>';
+
+            }
+
+
+        </script> 
+    </body>
+
+</html>

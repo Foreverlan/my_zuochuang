@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>做创网</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta content="telephone=no" name="format-detection" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <meta name="full-screen" content="yes">
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/bootstrap.min.css" />
+        <link href="__STATIC__/zuochuang/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/common.css" />
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/style.css" />
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/login.css" />
+    </head>
+    <body>
+        <div id="wrapper">
+            {include file="/common/header"}
+            <div id="main">
+                <div class="main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-lg-offset-1 col-xs-12">
+                                <div class=" content_homefeed mt70 mb15" >
+                                    <div class="content_homefeed_top">
+                                        <div class="line_left col-xs-2 col-lg-2"></div>
+                                        <div class="line_center col-xs-2 col-lg-2"></div>
+                                        <div class="line_right col-xs-2 col-lg-2"></div>
+                                        <div class="line_left col-xs-2 col-lg-2"></div>
+                                        <div class="line_center col-xs-2 col-lg-2"></div>
+                                        <div class="line_right col-xs-2 col-lg-2"></div>
+                                    </div>
+                                    <div class="row bg_f2">
+                                        <div class="col-sm-3 col-xs-5 left_list ">
+                                            <div class="row" >
+                                                <div class="rightmod_news_head bg_f2 text-center" >
+                                                    <h4 class="mt15">帐号设置</h4>
+                                                </div>
+                                                <h1 class="list" id="list-1" ><i class="fa fa-vcard-o fa-fw mr10"></i>基本信息</h1>
+                                                <h1 class="list" id="list-2" ><i class="fa fa-user-circle-o fa-fw mr10" ></i>头像</h1>
+                                                <hr class="hr_cc mt10">
+                                                <h1 class="list" id="list-3" ><i class="fa fa-lock fa-fw mr10"></i>隐私设置</h1>
+                                                <h1 class="list" id="list-4" ><i class="fa fa-envelope fa-fw mr10"></i>消息设置</h1>
+                                                <h1 class="list" id="list-5" ><i class="fa fa-ban  fa-fw mr10"></i>屏蔽设置</h1>
+                                                <h1 class="list" id="list-6" ><i class="fa fa-heart fa-fw mr10"></i>编好设置</h1>
+                                                <hr class="hr_cc mt10">
+                                                <h1 class="list" id="list-7" ><i class="fa fa-user fa-fw mr10"></i>帐号绑定</h1>
+                                                <hr class="hr_cc mt10">
+                                                <h1 class="list" id="list-8" ><i class="fa fa-diamond fa-fw mr10"></i>等级勋章</h1>
+                                            </div>
+                                        </div>
+                                        <div id="matter1" class="col-sm-9 col-xs-7 left_line_shadow bg_white" >
+                                            <div class="rightmod_news_head bg_white" >
+                                                <h1>基本信息</h1>
+                                                <h3><i class="fa fa-edit"></i>编辑</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-9 bg_white pt15">
+                                                <form class="form-horizontal text-center">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">做创号</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control" disabled value="100{$user.user_id}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">昵称</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control" disabled value="{$user.user_nickName }">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">角色</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control" disabled value="{$user.role}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">真实姓名</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control" disabled value="{$user.user_realName}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">所在地</label>
+                                                        <div class="col-xs-4" >
+                                                            <select disabled id="cmbProvince" class=" form-control"></select>
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <select disabled id="cmbCity" class="form-control">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">性别</label>
+                                                        <div class="col-xs-8">
+                                                            <select class="form-control" name="account" disabled>
+                                                                <option value="未知" {if condition="$user.user_sex eq '0'"} selected {/if} >未知</option>
+                                                                <option value="男"  {if condition="$user.user_sex eq '1'"} selected {/if}  >男</option>
+                                                                <option value="女" {if condition="$user.user_sex eq '2'"} selected {/if} >女</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">生日</label>
+                                                        <div class="col-xs-8" >
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+                                                                    <select disabled  id="year" rel="{$birth[0]}" class="form-control">
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-xs-4">
+                                                                    <select disabled  id="month" rel="{$birth[1]}" class="form-control"  >
+
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <select disabled  id="day" rel="{$birth[2]}"                                                         <select disabled  id="month" rel="01" class="form-control"  >
+                                                                            ></select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">注册时间</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control" disabled value="{$user.register_time}">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="rightmod_news_head">
+                                                <h1>联系信息</h1>
+                                                <h3><i class="fa fa-save"></i>保存</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 bg_white pt15">
+                                                <form class="form-horizontal text-center">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label" >邮箱</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">QQ</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"   class=" form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">手机号码</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"  class=" form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">联系地址</label>
+                                                        <div class="col-xs-8">
+                                                            <input type="text"  class=" form-control">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="rightmod_news_head">
+                                                <h1>收货地址</h1>
+                                                <h3 data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square-o" ></i>添加地址</h3>
+                                            </div>
+                                            <div class="col-xs-12 bg_white pt15">
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="row text-center">
+                                                            <div class="col-xs-2">
+                                                                <label class="control-label">小小聪</label>
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <label class="control-label">广东省中山市富湾东路8号4卡</label>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">13790710909</label>
+                                                            </div>
+                                                            <div class="col-xs-2"> <span>编辑</span> <span>|</span> <span>移除</span> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row text-center">
+                                                            <div class="col-xs-2">
+                                                                <label class="control-label">小聪</label>
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <label class="control-label">广东省中山市南区万科城市风景有桦苑C座501</label>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">13790710909</label>
+                                                            </div>
+                                                            <div class="col-xs-2"> <span>编辑</span> <span>|</span> <span>移除</span> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row text-center">
+                                                            <div class="col-xs-2">
+                                                                <label class="control-label">小小聪</label>
+                                                            </div>
+                                                            <div class="col-xs-5">
+                                                                <label class="control-label">广东省中山市富湾东路8号4卡</label>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">13790710909</label>
+                                                            </div>
+                                                            <div class="col-xs-2"> <span>编辑</span> <span>|</span> <span>移除</span> </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="matter2" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;"   >
+                                            <div class="rightmod_news_head" >
+                                                <h1>头像</h1>
+                                            </div>
+                                            <div class="col-xs-12  mt15">
+                                                <div class="col-xs-6" > <img class="center-block img-responsive" src="img/a3.jpg" /> </div>
+                                                <div class="col-xs-6" >
+                                                    <div class="col-xs-12 form-group">
+                                                        <label class="control-label">选择图片</label>
+                                                        <input type="file" class="form-control">
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 form-group">
+                                                        <input type="button" class="form-control btn-warning"   value="确定">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="matter3" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;" >
+                                            <div class="rightmod_news_head" >
+                                                <h1>隐私设置</h1>
+                                                <h3><i class="fa fa-edit"></i>编辑</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-9 mt15">
+                                                <form class="form-horizontal ">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label" >何种方式找到我</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios1">
+                                                                做创号</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios1" name="optionsRadios1">
+                                                                手机号</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios1" name="optionsRadios1">
+                                                                邮箱</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option4" id="optionsRadios1" name="optionsRadios1">
+                                                                QQ</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">真实姓名</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios2" name="optionsRadios2">
+                                                                可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios2">
+                                                                好友可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios2" name="optionsRadios2">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">邮箱</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios3" name="optionsRadios3">
+                                                                可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios3" name="optionsRadios3">
+                                                                好友可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios3" name="optionsRadios3">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">QQ</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios4" name="optionsRadios4">
+                                                                可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios4" name="optionsRadios4">
+                                                                好友可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios4" name="optionsRadios4">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">手机号码</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios5" name="optionsRadios5">
+                                                                可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios5" name="optionsRadios5">
+                                                                好友可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios5" name="optionsRadios5">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">联系地址</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios6" name="optionsRadios6">
+                                                                可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios6" name="optionsRadios6">
+                                                                好友可见</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios6" name="optionsRadios6">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="matter4" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;" >
+                                            <div class="rightmod_news_head" >
+                                                <h1>消息设置</h1>
+                                                <h3><i class="fa fa-edit"></i>编辑</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8 mt15">
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">私信我</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios1">
+                                                                允许所有人私信我</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios1" name="optionsRadios1">
+                                                                只允许我关注的人私信我</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios1" name="optionsRadios1">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">@/评论我</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios2" name="optionsRadios2">
+                                                                所有人</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios2">
+                                                                好友</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios2" name="optionsRadios2">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">赞我的文章</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios3" name="optionsRadios3">
+                                                                所有人</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios3" name="optionsRadios3">
+                                                                好友</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios3" name="optionsRadios3">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">赞我的评论</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios4" name="optionsRadios4">
+                                                                所有人</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios4" name="optionsRadios4">
+                                                                好友</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios4" name="optionsRadios4">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">赞赏我的文章</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios5" name="optionsRadios5">
+                                                                所有人</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios5" name="optionsRadios5">
+                                                                好友</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios5" name="optionsRadios5">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">有人关注我</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios6" name="optionsRadios6">
+                                                                所有人</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios6" name="optionsRadios6">
+                                                                好友</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option3" id="optionsRadios6" name="optionsRadios6">
+                                                                仅自己</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">关注栏目有新文章</label>
+                                                        <div class="col-xs-8">
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" checked="" value="option1" id="optionsRadios7" name="optionsRadios7">
+                                                                接收消息</label>
+                                                            <label class="checkbox-inline i-checks">
+                                                                <input type="radio" value="option2" id="optionsRadios7" name="optionsRadios7">
+                                                                不接收消息</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="matter5" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;" >
+                                            <div class="rightmod_news_head" >
+                                                <h1>屏蔽设置</h1>
+                                                <h3><i class="fa fa-edit"></i>编辑</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8 mt15">
+                                                <form class="form-horizontal text-center">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">屏蔽话题设置</label>
+                                                        <div class="col-xs-8">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control">
+                                                                <div class="input-group-btn">
+                                                                    <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">添加 <span class="caret"></span> </button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#">选项1</a> </li>
+                                                                        <li><a href="#">选项2</a> </li>
+                                                                        <li><a href="#">选项3</a> </li>
+                                                                        <li><a href="#">选项4</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">屏蔽专栏设置</label>
+                                                        <div class="col-xs-8">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control">
+                                                                <div class="input-group-btn">
+                                                                    <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">添加 <span class="caret"></span> </button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#">选项1</a> </li>
+                                                                        <li><a href="#">选项2</a> </li>
+                                                                        <li><a href="#">选项3</a> </li>
+                                                                        <li><a href="#">选项4</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">屏蔽用户设置</label>
+                                                        <div class="col-xs-8">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control">
+                                                                <div class="input-group-btn">
+                                                                    <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">添加 <span class="caret"></span> </button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#">选项1</a> </li>
+                                                                        <li><a href="#">选项2</a> </li>
+                                                                        <li><a href="#">选项3</a> </li>
+                                                                        <li><a href="#">选项4</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="matter6" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;" >
+                                            <div class="rightmod_news_head" >
+                                                <h1>编好设置</h1>
+                                                <h3><i class="fa fa-edit"></i>编辑</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 mt15">
+                                                <form class="form-horizontal text-center">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">编好栏目</label>
+                                                        <div class="col-xs-8">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control">
+                                                                <div class="input-group-btn">
+                                                                    <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">添加 <span class="caret"></span> </button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#">选项1</a> </li>
+                                                                        <li><a href="#">选项2</a> </li>
+                                                                        <li><a href="#">选项3</a> </li>
+                                                                        <li><a href="#">选项4</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="matter7" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;" >
+                                            <div class="rightmod_news_head" >
+                                                <h1>账号绑定</h1>
+                                                <h3><i class="fa fa-edit"></i>编辑</h3>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8 mt15">
+                                                <form class="form-horizontal text-center">
+                                                    <div class="form-group">
+                                                        <div class="col-xs-6">
+                                                            <div class="login_box" > <span><img src="img/ico08.png"></span></div>
+                                                            <label >绑定微信账号 </label>
+                                                            <p>未绑定</p>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input type="button" class="btn-warning form-control" value="绑定">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-xs-6">
+                                                            <div class="login_box" > <span><img src="img/ico09.png"></span></div>
+                                                            <label >绑定QQ帐号 </label>
+                                                            <p>已绑定</p>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input type="button" class="btn-warning form-control" value="修改">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-xs-6">
+                                                            <div class="login_box" > <span><img src="img/ico10.png"></span></div>
+                                                            <label >绑定微博帐号 </label>
+                                                            <p>未绑定</p>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input type="button" class="btn-warning form-control" value="绑定">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-xs-6">
+                                                            <div class="login_box" > <span><img src="img/ico08.png"></span></div>
+                                                            <label >绑定邮箱帐号 </label>
+                                                            <p>未绑定</p>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <input type="button" class="btn-warning form-control" value="绑定">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div id="matter8" class="col-sm-9 left_line_shadow bg_white min_height" style="display:none;" >
+                                            <div class="rightmod_news_head" >
+                                                <h1>等级勋章</h1>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8 mt15"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" >
+                    <div class="modal-content animated bounceInRight">
+                        <div class="row">
+                            <div class="col-xs-12 ">
+                                <div class="row text-center mb47 mt30 ">
+                                    <div class="col-xs-10 col-xs-offset-1">
+                                        <div class="col-xs-12 text-center ">
+                                            <h1>新建地址</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-10 col-xs-offset-1">
+                                    <hr class="mt-50" />
+                                </div>
+                                <div class="col-xs-10 col-xs-offset-1 mt-20" id="login_modalbox">
+                                    <form class="form-horizontal">
+                                        <div class="form-group" >
+                                            <div class="row">
+                                                <div class="col-xs-3" >
+                                                    <label class="control-label">所在地区:</label>
+                                                </div>
+                                                <div class="col-xs-3" style="padding:0;" >
+                                                    <select class="form-control m-b" name="account">
+                                                        <option>选项 1</option>
+                                                        <option>选项 2</option>
+                                                        <option>选项 3</option>
+                                                        <option>选项 4</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-3" style="padding:0;" >
+
+
+                                                </div>
+                                                <div class="col-xs-3" style="padding:0;" >
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <div class="row ">
+                                                <div class="col-xs-3" >
+                                                    <label class="control-label">详细地址：</label>
+                                                </div>
+                                                <div class="col-xs-9" style="padding:0;">
+                                                    <textarea class="form-control" placeholder="详细地址，街道、门牌号等"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row ">
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">收货人：</label>
+                                                </div>
+                                                <div class="col-xs-6" style="padding:0;">
+                                                    <input type="text"   class=" form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row ">
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">联系电话：</label>
+                                                </div>
+                                                <div class="col-xs-6" style="padding:0;">
+                                                    <input type="text"   class=" form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group  ">
+                                            <div class="row ">
+                                                <div class="col-xs-6 col-xs-offset-3 mt15" style="padding:0;">
+                                                    <input type="button"  value="保存"  class="btn btn-warning form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-top">
+                        <ul>
+                            <li><a href="#">社区</a></li>
+                            <li><a href="#">团队</a></li>
+                            <li><a href="#">商城</a></li>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">个人中心</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <p> <span class="glyphicon glyphicon-earphone"></span> 全国客服热线：0760-8611366 </p>
+                                <p> <span class="glyphicon glyphicon-envelope"></span> 邮箱：zuochuang@xinxinggd.net </p>
+                                <p> <span class="glyphicon glyphicon-map-marker"></span> 公司地址：广东省中山市富湾东路8号4卡 </p>
+                                <p>广东信兴科技有限公司    Copyright 2017 All Right Reserved 粤ICP备06016855号-8</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="icon-box"> <span><img src="img/ico01.png"></span> <span><img src="img/ico02.png"></span> <span><img src="img/ico03.png"></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/jquery.min.js"></script> 
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/bar.js"></script> 
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/birthday.js"></script> 
+        <script>
+            var isMobile = {
+                Android: function () {
+                    return navigator.userAgent.match(/Android/i) ? true : false;
+                },
+                BlackBerry: function () {
+                    return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+                },
+                iPad: function () {
+                    return navigator.userAgent.match(/iPad/i) ? true : false;
+                },
+                iOS: function () {
+                    return navigator.userAgent.match(/iPhone/i) ? true : false;
+                },
+                Windows: function () {
+                    return navigator.userAgent.match(/IEMobile/i) ? true : false;
+                },
+                any: function () {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+                }
+            };
+
+            var oEmail = document.getElementById('email');
+            var oEmailBox = document.getElementById('email_box');
+            var oSetting = document.getElementById('setting');
+            var oSettingBox = document.getElementById('setting_box');
+            var timer1 = null;
+            oEmailBox.onmouseover = oEmail.onmouseover = function ()
+            {
+                console.log("jingru");
+                clearTimeout(timer1);
+                oSettingBox.style.display = 'none';
+                oEmailBox.style.display = 'block';
+            };
+            oEmailBox.onmouseout = oEmail.onmouseout = function ()
+            {
+                console.log("yichu");
+                timer1 = setTimeout(function () {
+                    oEmailBox.style.display = 'none';
+                }, 500);
+            };
+
+            oSettingBox.onmouseover = oSetting.onmouseover = function ()
+            {
+                console.log("jingru");
+                clearTimeout(timer1);
+                oEmailBox.style.display = 'none';
+                oSettingBox.style.display = 'block';
+            };
+            oSettingBox.onmouseout = oSetting.onmouseout = function ()
+            {
+                console.log("yichu");
+                timer1 = setTimeout(function () {
+                    oSettingBox.style.display = 'none';
+                }, 500);
+            };
+
+            $('.list').click(function () {
+                $('.list').css("background", "#f2f2f2");
+                $('.list').css("z-index", "0");
+                $(this).css("background", "white");
+                $(this).css("z-index", "9");
+            });
+
+            var temp = "none";
+
+            $("#list-1").click(function () {
+                openMatter(1);
+            });
+            $("#list-2").click(function () {
+                openMatter(2);
+            });
+            $("#list-3").click(function () {
+                openMatter(3);
+            });
+            $("#list-4").click(function () {
+                openMatter(4);
+            });
+            $("#list-5").click(function () {
+                openMatter(5);
+            });
+            $("#list-6").click(function () {
+                openMatter(6);
+            });
+            $("#list-7").click(function () {
+                openMatter(7);
+            });
+            $("#list-8").click(function () {
+                openMatter(8);
+            });
+            function openMatter(obj) {
+                for (var i = 1; i < 9; i++) {
+
+                    if (i == obj) {
+                        temp = "block";
+                    } else {
+                        temp = "none";
+                    }
+
+                    //document.getElementById("matter" + i).style.display = temp;
+                    var seletor = "#" + "matter" + i;
+                    $(seletor).css("display", temp);
+
+                }
+            }
+
+            $(document).ready(function () {
+                var trigger = $('.hamburger'),
+                        overlay = $('.overlay'),
+                        sidebar = $('.sidebar-wrapper'),
+                        isClosed = false;
+
+                trigger.click(function () {
+                    hamburger_cross();
+                });
+
+                function hamburger_cross() {
+
+                    if (isClosed == true) {
+                        overlay.hide();
+                        sidebar.hide();
+                        trigger.removeClass('is-open');
+                        trigger.addClass('is-closed');
+                        isClosed = false;
+                    } else {
+                        overlay.show();
+                        sidebar.show();
+                        trigger.removeClass('is-closed');
+                        trigger.addClass('is-open');
+                        isClosed = true;
+                    }
+                }
+
+                $('[data-toggle="offcanvas"]').click(function () {
+                    $('#wrapper').toggleClass('toggled');
+                });
+
+                var islogin = {$isLogin};
+                if (islogin) {
+                    $('#login_win').css('display', 'none');
+                    $('.islogin').css('display', 'block');
+                    $('.nologin').css('display', 'none');
+                } else {
+                    $('#login_win').css('display', 'block');
+                    $('.nologin').css('display', '');
+                    $('.islogin').css('display', 'none');
+                }
+                ;
+
+                $('.zhankai').click(function () {
+                    var text = $(this).children().children().closest('em').html();
+
+                    if (text == "展开")
+                    {
+                        $(this).children().html('<span class="glyphicon glyphicon-chevron-up"></span><em>收起</em>');
+
+                        $(this).parent().parent().prev().children().closest('.content').css("display", "none");
+
+                        $(this).parent().parent().prev().children().closest('.content_html').css("display", "block");
+                    } else
+                    {
+                        $(this).children().html('<span class="glyphicon glyphicon-chevron-down"></span><em>展开</em>');
+
+                        $(this).parent().parent().prev().children().closest('.content').css("display", "block");
+
+                        $(this).parent().parent().prev().children().closest('.content_html').css("display", "none");
+                    }
+                });
+
+
+            });
+
+            $.ms_DatePicker({
+                YearSelector: "#year",
+                MonthSelector: "#month",
+                DaySelector: "#day"
+            });
+            $.ms_DatePicker();
+
+
+        </script>
+    </body>
+</html>

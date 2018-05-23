@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html onLoad="GetData()" >
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--360浏览器优先以webkit内核解析-->
+
+<title>主页</title>
+<link href="__STATIC__/Materialize/css/materialize.css" type="text/css" rel="stylesheet">
+<link href="__STATIC__/Materialize/css/style.css" type="text/css" rel="stylesheet">
+
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link rel="shortcut icon" href="favicon.ico">
+<link href="__STATIC__/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+<link href="__STATIC__/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="__STATIC__/css/animate.css" rel="stylesheet">
+<link href="__STATIC__/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="gray-bg" >
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="row row-sm text-center">
+            <div class="col-xs-6">
+              <div class="panel padder-v item">
+                <div class='h1 text-info font-thin h1' id="visitUP">{$Tvisit}</div>
+                <span class="text-muted text-xs">同比增长</span>
+                <div class="top text-right w-full"><i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel padder-v item bg-info">
+                <div class='h1 text-fff font-thin h1' id="Tvisit">{$Yvisit}</div>
+                <span class="text-muted text-xs">今日访问</span>
+                <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel padder-v item bg-primary">
+                <div class="h1 text-fff font-thin h1" id="newUP">{$result}</div>
+                <span class="text-muted text-xs">新增用户</span>
+                <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel padder-v item">
+                <div class="h1 font-thin h1" style="color:#7266ba" id="Tmem"></div>
+                <span class="text-muted text-xs">用户总数</span>
+                <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="ibox float-e-margins">
+            
+            <div class="ibox-content" style="border-top:none;">
+              <div class="echarts" id="echarts-lines-chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+          <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+	    <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>柱状图</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="echarts-bar-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>折线图</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="echarts-line-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>饼状图</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="echarts-pie-chart"></div>
+                    </div>
+                </div>
+            </div>
+	    <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>饼状图</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="echarts-pie-chart1"></div>
+                    </div>
+                </div>
+            </div>
+	    <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>环状图</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="echarts-pie-chart2"></div>
+                    </div>
+                </div>
+            </div>
+	    <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>环状图</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="echarts-pie-chart3"></div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        
+    </div>
+  </div>
+</div>
+<!-- 全局js --> 
+<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script> 
+<script src="__STATIC__/js/bootstrap.min.js"></script> 
+<script src="__STATIC__/js/plugins/layer/layer.min.js"></script> 
+<!-- Flot --> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.tooltip.min.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.resize.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.pie.js"></script> 
+<!-- 自定义js --> 
+<script src="__STATIC__/js/content.js"></script> 
+<script type="text/javascript" src="__STATIC__/Materialize/js/plugins/chartist-js/chartist.min.js"></script> 
+
+<!-- chartjs --> 
+
+<!-- ECharts --> 
+<script src="__STATIC__/js/plugins/echarts/echarts-all.js"></script> 
+
+
+<!-- ECharts demo data --> 
+<script src="__STATIC__/js/demo/echarts-demo.js"></script> 
+<!--flotdemo--> 
+<script type="text/javascript">
+		function GetData() 
+		{
+                    $.ajax({
+                    url:'/index.php/admin/Index/home',
+                    type:'post',
+                    dataType:'json',
+                    data:{SystemId:1},
+                    success:function(res){
+                        console.log(res)
+                        console.log(res.Tvisit)
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        layer.open({
+                            title: '提示',
+                            icon: 2,
+                            content: '网络失败，请刷新页面后重试'
+                        });
+                    }
+                })
+            }
+
+
+
+        $(function() {
+            var container = $("#flot-line-chart-moving");
+            var maximum = container.outerWidth() / 2 || 300;
+            var data = [];
+
+            function getRandomData() {
+                if (data.length) {
+                    data = data.slice(1);
+                }
+                while (data.length < maximum) {
+                    var previous = data.length ? data[data.length - 1] : 50;
+                    var y = previous + Math.random() * 10 - 5;
+                    data.push(y < 0 ? 0 : y > 100 ? 100 : y);
+                }
+                var res = [];
+                for (var i = 0; i < data.length; ++i) {
+                    res.push([i, data[i]])
+                }
+                return res;
+            }
+            series = [{
+                data: getRandomData(),
+                lines: {
+                    fill: true
+                }
+            }];
+            var plot = $.plot(container, series, {
+                grid: {
+
+                    color: "#999999",
+                    tickColor: "#f7f9fb",
+                    borderWidth:0,
+                    minBorderMargin: 20,
+                    labelMargin: 10,
+                    backgroundColor: {
+                        colors: ["#ffffff", "#ffffff"]
+                    },
+                    margin: {
+                        top: 8,
+                        bottom: 20,
+                        left: 20
+                    },
+                    markings: function(axes) {
+                        var markings = [];
+                        var xaxis = axes.xaxis;
+                        for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 2) {
+                            markings.push({
+                                xaxis: {
+                                    from: x,
+                                    to: x + xaxis.tickSize
+                                },
+                                color: "#fff"
+                            });
+                        }
+                        return markings;
+                    }
+                },
+                colors: ["#4fc5ea"],
+                xaxis: {
+                    tickFormatter: function() {
+                        return "";
+                    }
+                },
+                yaxis: {
+                    min: 0,
+                    max: 110
+                },
+                legend: {
+                    show: true
+                }
+            });
+
+            // Update the random dataset at 25FPS for a smoothly-animating chart
+
+            setInterval(function updateRandom() {
+                series[0].data = getRandomData();
+                plot.setData(series);
+                plot.draw();
+            }, 40);
+        });
+</script>
+</body>
+</html>

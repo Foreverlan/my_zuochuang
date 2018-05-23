@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--360浏览器优先以webkit内核解析-->
+
+<title>主页</title>
+<link href="__STATIC__/Materialize/css/materialize.css" type="text/css" rel="stylesheet">
+<link href="__STATIC__/Materialize/css/style.css" type="text/css" rel="stylesheet" >
+
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link rel="shortcut icon" href="favicon.ico">
+<link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+<link href="__STATIC__/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="__STATIC__/css/animate.css" rel="stylesheet">
+<link href="__STATIC__/css/style.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg" onLoad="GetData()" >
+
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row row-sm text-center">
+        <div class="col-xs-3">
+          <div class="panel padder-v item bg-green">
+            <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+            <div class='h1 text-fff font-thin h1 text-center' id="Tfans"></div>
+            <div class="text-muted text-center h3 text-fff">关注人数</div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="panel padder-v item bg-zi">
+            <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+            <div class='h1 text-fff font-thin h1 text-center' id="Tmember"></div>
+            <div class="text-muted  text-center h3 text-fff">注册人数</div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="panel padder-v item bg-hui">
+            <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+            <div class="h1 text-fff font-thin h1 text-center" id="Tvisit"></div>
+            <div class="text-muted  text-center h3 text-fff">今日访问</div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="panel padder-v item bg-szi">
+            <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+            <div class="h1 font-thin h1 text-center text-fff"  id="Tcost"></div>
+            <div class="text-muted text-center h3 text-fff">今日收入</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>折线图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-line-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>折线图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-line-chart1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>柱状图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-bar-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>柱状图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-bar-chart1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>饼状图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-pie-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>环状图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-pie-chart1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>雷达图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-radar-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>雷达图</h5>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-radar-chart1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>和弦图</h5>
+              <div class="ibox-tools"> <a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a> <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#"> <i class="fa fa-wrench"></i> </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="graph_flot.html#">选项1</a> </li>
+                  <li><a href="graph_flot.html#">选项2</a> </li>
+                </ul>
+                <a class="close-link"> <i class="fa fa-times"></i> </a> </div>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-chord-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>仪表盘</h5>
+              <div class="ibox-tools"> <a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a> <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#"> <i class="fa fa-wrench"></i> </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="graph_flot.html#">选项1</a> </li>
+                  <li><a href="graph_flot.html#">选项2</a> </li>
+                </ul>
+                <a class="close-link"> <i class="fa fa-times"></i> </a> </div>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-gauge-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>漏斗图</h5>
+              <div class="ibox-tools"> <a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a> <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#"> <i class="fa fa-wrench"></i> </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="graph_flot.html#">选项1</a> </li>
+                  <li><a href="graph_flot.html#">选项2</a> </li>
+                </ul>
+                <a class="close-link"> <i class="fa fa-times"></i> </a> </div>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-funnel-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>力导向布局图</h5>
+              <div class="ibox-tools"> <a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a> <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#"> <i class="fa fa-wrench"></i> </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="graph_flot.html#">选项1</a> </li>
+                  <li><a href="graph_flot.html#">选项2</a> </li>
+                </ul>
+                <a class="close-link"> <i class="fa fa-times"></i> </a> </div>
+            </div>
+            <div class="ibox-content">
+              <div class="echarts" id="echarts-force-chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>中国地图</h5>
+              <div class="ibox-tools"> <a class="collapse-link"> <i class="fa fa-chevron-up"></i> </a> <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#"> <i class="fa fa-wrench"></i> </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="graph_flot.html#">选项1</a> </li>
+                  <li><a href="graph_flot.html#">选项2</a> </li>
+                </ul>
+                <a class="close-link"> <i class="fa fa-times"></i> </a> </div>
+            </div>
+            <div class="ibox-content">
+              <div style="height:600px" id="echarts-map-chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 全局js --> 
+<script src="__STATIC__/js/jquery.min.js?v=2.1.4"></script> 
+<script src="__STATIC__/js/bootstrap.min.js?v=3.3.6"></script> 
+<script src="__STATIC__/js/layer/layer.js"></script> 
+<!-- Flot --> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.tooltip.min.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.resize.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.pie.js"></script> 
+<!-- 自定义js --> 
+<script src="__STATIC__/js/content.js"></script> 
+<script type="text/javascript" src="__STATIC__/Materialize/js/plugins/chartist-js/chartist.min.js"></script> 
+
+<!-- chartjs --> 
+
+<!-- ECharts --> 
+<script src="__STATIC__js/plugins/echarts/echarts-all.js"></script> 
+
+
+<!-- ECharts demo data --> 
+<script src="__STATIC__/js/demo/xinxing-demo.js"></script> 
+<!--flotdemo--> 
+<script type="text/javascript">
+		function GetData() 
+		{
+			 $.post(
+                    'http://bigdata.xinxinggd.net/PHP/BigData.php',
+					{OrgId:1,tMember:true,tVisiter:true,Fans:true,Cost:true},
+                    function(data){
+			 			$("#Tfans").html( data.OFans );
+            			$("#Tvisit").html( data.OtVisiter );
+			 			$("#Tmember").html( data.OtMember );
+			 			$("#Tcost").html( data.OCost );			 
+                    },'json')
+		}
+    </script>
+</body>
+</html>

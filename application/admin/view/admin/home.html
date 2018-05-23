@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--360浏览器优先以webkit内核解析-->
+
+<title>主页</title>
+<link href="__STATIC__/Materialize/css/materialize.css" type="text/css" rel="stylesheet">
+<link href="__STATIC__/Materialize/css/style.css" type="text/css" rel="stylesheet">
+
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+<link rel="shortcut icon" href="favicon.ico">
+<link href="__STATIC__/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+<link href="__STATIC__/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="__STATIC__/css/animate.css" rel="stylesheet">
+<link href="__STATIC__/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="gray-bg" >
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="row row-sm text-center">
+            <div class="col-xs-6">
+              <div class="panel padder-v item">
+                <div class='h1 text-info font-thin h1' id="visitUP">{$arr.visit_up}</div>
+                <span class="text-muted text-xs">同比增长</span>
+                <div class="top text-right w-full"><i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel padder-v item bg-info">
+                <div class='h1 text-fff font-thin h1' id="Tvisit">{$arr.visit_member}</div>
+                <span class="text-muted text-xs">今日访问</span>
+                <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel padder-v item bg-primary">
+                <div class="h1 text-fff font-thin h1" id="newUP">{$arr.user_up}</div>
+                <span class="text-muted text-xs">新增用户</span>
+                <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel padder-v item">
+                <div class="h1 font-thin h1" style="color:#7266ba" id="Tmem">{$arr.user_member}</div>
+                <span class="text-muted text-xs">用户总数</span>
+                <div class="top text-right w-full"> <i class="fa fa-caret-down text-warning m-r-sm"></i> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 全局js --> 
+<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script> 
+<script src="__STATIC__/js/bootstrap.min.js"></script> 
+<script src="__STATIC__/js/plugins/layer/layer.min.js"></script> 
+<!-- Flot --> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.tooltip.min.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.resize.js"></script> 
+<script src="__STATIC__/js/plugins/flot/jquery.flot.pie.js"></script> 
+<!-- 自定义js --> 
+<script src="__STATIC__/js/content.js"></script> 
+
+
+
+
+</body>
+</html>

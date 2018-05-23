@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--360浏览器优先以webkit内核解析-->
+
+        <title>主页</title>
+
+
+        <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="__STATIC__/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+        <link href="__STATIC__/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+        <link href="__STATIC__/css/animate.css" rel="stylesheet">
+        <link href="__STATIC__/css/style.css?v=4.1.0" rel="stylesheet">
+        <link href="__STATIC__/css/bootstrap-table.min.css" rel="stylesheet">
+    </head>
+
+    <body class="gray-bg" >
+        <div class="wrapper wrapper-content">
+            <div class="row">
+
+
+                <form class="form-horizontal" method="post" action="{:url('Admin/adminHandle')}">                    
+                    <!--通用信息-->
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2" >
+                        <div class="form-group"  >
+                            <label class="col-xs-3 col-xs-offset-1 control-label text-center" style="text-align:center;" >用户名：</label>
+                            <div class="col-xs-7">
+                                <input type="text"   class=" form-control" name="user_name" value="{$info[0]['user_name']}" >
+                            </div>
+                        </div>
+                        <div class="form-group"  >
+                            <label class="col-xs-3 col-xs-offset-1 control-label text-center" style="text-align:center;" >真实姓名：</label>
+                            <div class="col-xs-7">
+                                <input type="text"   class=" form-control" name="real_name" value="{$info[0]['real_name']}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 col-xs-offset-1 control-label" style="text-align:center;">密码：</label>
+                            <div class="col-xs-7">
+                                <input type="password"   class=" form-control" name="password" value="{$info[0]['password']}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-3 col-xs-6" >
+                                <input type="hidden" name="act" value="{$act}">
+                                <input type="hidden" name="Id" value="{$info[0]['Id']}">
+                                <button class="btn btn-sm btn-primary "  onclick="adsubmit()">保存</button>
+
+                            </div>
+                        </div>
+
+
+                    </div>              
+                </form><!--表单数据-->
+            </div>
+        </div>
+        <!-- 全局js --> 
+        <script src="__STATIC__/js/jQuery-2.1.4.min.js"></script> 
+        <script src="__STATIC__/js/bootstrap.min.js"></script> 
+        <script src="__STATIC__/js/plugins/layer/layer.min.js"></script> 
+        <!-- Flot --> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.js"></script> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.tooltip.min.js"></script> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.resize.js"></script> 
+        <script src="__STATIC__/js/plugins/flot/jquery.flot.pie.js"></script> 
+        <!-- 自定义js --> 
+        <script src="__STATIC__/js/content.js"></script> 
+        <script>
+                                    function adsubmit()
+                                    {
+                                        if ($('input[name=user_name]').val() == '') {
+                                            layer.msg('用户名不能为空！', {icon: 2, time: 1000});   //alert('少年，用户名不能为空！');
+                                            return false;
+                                        }
+                                        if ($('input[name=real_name]').val() == '') {
+                                            layer.msg('真实姓名不能为空！', {icon: 2, time: 1000});//alert('少年，邮箱不能为空！');
+                                            return false;
+                                        }
+                                        if ($('input[name=password]').val() == '') {
+                                            layer.msg('密码不能为空！', {icon: 2, time: 1000});//alert('少年，密码不能为空！');
+                                            return false;
+                                        }
+                                        $('#adminHandle').submit();
+                                    }
+        </script>
+
+
+        <!-- ECharts demo data --> 
+
+    </body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>做创网</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta content="telephone=no" name="format-detection" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <meta name="full-screen" content="yes">
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/common.css" />
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/style.css" />
+
+        <link rel="stylesheet" href="__STATIC__/zuochuang/css/login.css" />
+        <link href="__STATIC__/zuochuang/css/font-awesome.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="overlay">
+                <div id="sidebar-wrapper" class="sidebar-wrapper">
+                    <div class="header-user islogin">
+                        <div class="user-img"><a href="{:url('index/Index/myself')}"> <img src="{$user.user_header}">
+                                <h1>{$user.user_nickName}</h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-search">
+                        <form action="#" >
+                            <input type="text" placeholder="搜索相关信息">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </form>
+                    </div>
+                    <nav class="navbar nologin" role="navigation">
+                        <ul>
+                            <li><a href="#">社区</a></li>
+                            <li><a href="#">团队</a></li>
+                            <li><a href="#">商城</a></li>
+                            <li><a href="#">登陆</a></li>
+                            <li><a href="#">注册</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="navbar islogin" role="navigation">
+                        <ul>
+                            <li><a href="#">社区</a></li>
+                            <li><a href="#">团队</a></li>
+                            <li><a href="#">商城</a></li>
+                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">短信<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">@我的</a></li>
+                                    <li><a href="#">评论</a></li>
+                                    <li><a href="#">点赞</a></li>
+                                    <li><a href="#">私信</a></li>
+                                    <li><a href="#">群消息</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{:url('index/Index/accSetting')}">账号设置</a></li>
+                                    <li><a href="#">安全设置</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <header class="navbar-fixed-top">
+                <div class="container">
+                    <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
+                    <div class="logo"></div>
+                    <div class="header-nav">
+                        <ul>
+                            <li class="active"><a href="{:url('index/Index/index')}">社区</a></li>
+                            <li><a href="#">团队</a></li>
+                            <li><a href="#">商城</a></li>
+                        </ul>
+                    </div>
+                    <div class="header-search">
+                        <form action="#">
+                            <input type="text"  placeholder="搜索相关信息">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </form>
+                    </div>
+                    <div class="header-user-nologin nologin" >
+                        <a href="{:url('index/Login/register')}"> <span class="toregister">注册</span> </a> 
+                        <span class="line">|</span>
+                        <a href="#" data-toggle="modal" data-target="#myModal"> <span class="tologin" >登陆</span></a> 
+                    </div>
+                    <div class="header-user islogin">
+                        <div class="user-img"> <a href="{:url('index/Index/myself')}"><img src="{$user.user_header}">
+                                <h1>{$user.user_nickName}</h1>
+                            </a> </div>
+                        <span class="line">|</span> <span class="email"> <a href="#" id="email" style="color:#ccc;"> <span class="glyphicon glyphicon-envelope"></span> </a>
+                            <div class="popup_email" id="email_box"> <span><em></em></span>
+                                <div class="list_box pl20">@我的</div>
+                                <div class="list_box pl20">评论</div>
+                                <div class="list_box pl20">点赞</div>
+                                <hr class="hr_ee mt1 mb1">
+                                <div class="list_box pl20">私信</div>
+                                <div class="list_box pl20">群消息</div>
+                                <hr class="hr_cc mt1 mb1">
+                                <div class="list_box text-center mt1">消息设置</div>
+                            </div>
+                        </span> <span class="setting"> <a href="#" id="setting" style="color:#ccc;"> <span class="glyphicon glyphicon-cog"></span> </a>
+                            <div class="popup_setting" id="setting_box"> <span><em></em></span>
+                                <div class="list_box pl20"><a href="{:url('index/Index/accSetting')}">账号设置</a></div>
+                                <div class="list_box pl20">安全设置</div>
+                                <hr class="hr_ee mt1 mb1">
+                                <div class="list_box pl20">隐私设置</div>
+                                <div class="list_box pl20">消息设置</div>
+                                <div class="list_box pl20">屏蔽设置</div>
+                                <div class="list_box pl20">编好设置</div>
+                                <hr class="hr_ee mt1 mb1">
+                                <div class="list_box pl20">账号绑定</div>
+                                <hr class="hr_cc mt1 mb1">
+                                <div class="list_box text-center mt1"><a href="{:url('index/Index/index',array('exit'=>1))}">退出</a></div>
+                            </div>
+                        </span> 
+                    </div>
+                </div>
+            </header>
+
+            <div id="menu">
+                <div class="menu">
+                    <ul>
+                        {volist name="section" id="vo"}
+
+                        <li><a href="{$vo.name}"><i class="{$vo.ico} fa-fw"></i>{$vo.section}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+                <div class="main">
+                    <div class="container" >
+                        <div class="row">
+                            <div class="col-lg-8 left mb10">
+                                <div class="content_homefeed" style="margin:0;">
+                                    <div class="content_homefeed_top">
+                                        <div class="line_left col-xs-2 col-lg-2"></div>
+                                        <div class="line_center col-xs-2 col-lg-2"></div>
+                                        <div class="line_right col-xs-2 col-lg-2"></div>
+                                        <div class="line_left col-xs-2 col-lg-2"></div>
+                                        <div class="line_center col-xs-2 col-lg-2"></div>
+                                        <div class="line_right col-xs-2 col-lg-2"></div>
+                                    </div>
+                                    <ul id="myTab" class="nav nav-tabs">
+                                        <li class="active"> <a href="#all" data-toggle="tab">全部</a> </li>   
+                                        <li><a href="#picture" data-toggle="tab">图片</a></li>
+                                        <li><a href="#video" data-toggle="tab">视频</a></li>
+                                    </ul>
+                                </div>
+                                <div id="myTabContent" class="tab-content mt10">
+                                    <div class="tab-pane fade in active" id="all">
+                                        {volist name="list" id="vo"}
+                                        {if condition="$vo['cover_photo_sm']"}
+                                        <div class="content_cardwrap">
+                                            <div class="content_item">
+                                                <div class="content_item_WB">
+                                                    <div class="WB_screen fr">
+                                                        <div class="screen_box"> <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="glyphicon glyphicon-menu-down"></i></a>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                <li><a href="#">关注</a></li>
+                                                                <li><a href="#">分享</a></li>
+                                                                <li><a data-toggle="modal" data-target="#myModal1" href="#">举报</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="WB_face fl">
+                                                        <div class="face"><a target="_blank"><img alt="" width="50" height="50" src="{$vo.user_header}"></a></div>
+                                                    </div>
+                                                    <div class="WB_detail">
+                                                        <div class="WB_info">
+                                                            <h1><a target="_blank">{$vo.user_nickName}</a></h1>
+                                                            <span>{$vo.create_date}</span><label class="ml10">来自{$vo.section}</label> </div>
+
+                                                    </div>
+                                                    <div class="WB_title  mb10">
+                                                        {$vo.title}
+                                                    </div>
+                                                    <div class="WB_text content">
+                                                        <div class="f_l mr10" style="width:160px;height:100px;"><img src="{$vo.cover_photo_sm}" class="img-responsive"></div>
+
+                                                        <div >{$vo.content} </div>
+                                                    </div>
+                                                    <div class="WB_text content_html" style="display:none;">
+                                                        <div>{$vo.content_html} </div>
+                                                    </div>
+                                                </div>
+                                                <div class="WB_feed_handle">
+                                                    <ul>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-star-empty"></span><em>收藏</em> </span> </a> </li>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-comment"></span><em>143</em> </span> </a> </li>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-thumbs-up"></span><em>156</em> </span> </a> </li>
+                                                        <li class="zhankai"> <a class="S_txt2" href="javascript:void(0);"> <span class="glyphicon glyphicon-chevron-down"></span><em>展开</em> </a> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        {else/}
+                                        <div class="content_cardwrap">
+                                            <div class="content_item">
+                                                <div class="content_item_WB">
+                                                    <div class="WB_screen fr">
+                                                        <div class="screen_box"> <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="glyphicon glyphicon-menu-down"></i></a>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                <li><a href="#">关注</a></li>
+                                                                <li><a href="#">分享</a></li>
+                                                                <li><a data-toggle="modal" data-target="#myModal1" href="#">举报</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="WB_face fl">
+                                                        <div class="face"><a target="_blank"><img alt="" width="50" height="50" src="{$vo.user_header}"></a></div>
+                                                    </div>
+                                                    <div class="WB_detail">
+                                                        <div class="WB_info">
+                                                            <h1><a target="_blank">{$vo.user_nickName}</a></h1>
+                                                            <span>{$vo.create_date}</span><label class="ml10">来自{$vo.section}</label> </div>
+
+                                                    </div>
+                                                    <div class="WB_title  mb10">
+                                                        {$vo.title}
+                                                    </div>
+                                                    <div class="WB_text content">
+                                                        <div >{$vo.content}</div>
+                                                    </div>
+                                                    <div class="WB_text content_html" style="display:none;">
+                                                        <div>{$vo.content_html}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="WB_feed_handle">
+                                                    <ul>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-star-empty"></span><em>收藏</em> </span> </a> </li>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-comment"></span><em>143</em> </span> </a> </li>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-thumbs-up"></span><em>156</em> </span> </a> </li>
+                                                        <li class="zhankai"> <a class="S_txt2" href="javascript:void(0);"> <span class="glyphicon glyphicon-chevron-down"></span><em>展开</em> </a> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/if}
+                                        {/volist}
+                                    </div>
+                                    <div class="tab-pane fade" id="video">
+
+                                    </div>
+                                    <div class="tab-pane fade" id="picture">
+                                        {volist name="list" id="vo"}
+                                        {if condition="$vo['cover_photo_sm']"}
+                                        <div class="content_cardwrap">
+                                            <div class="content_item">
+                                                <div class="content_item_WB">
+                                                    <div class="WB_screen fr">
+                                                        <div class="screen_box"> <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="glyphicon glyphicon-menu-down"></i></a>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                <li><a href="#">关注</a></li>
+                                                                <li><a href="#">分享</a></li>
+                                                                <li><a data-toggle="modal" data-target="#myModal1" href="#">举报</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="WB_face fl">
+                                                        <div class="face"><a target="_blank"><img alt="" width="50" height="50" src="{$vo.user_header}"></a></div>
+                                                    </div>
+                                                    <div class="WB_detail">
+                                                        <div class="WB_info">
+                                                            <h1><a target="_blank">{$vo.user_nickName}</a></h1>
+                                                            <span>{$vo.create_date} </span><label class="ml10">来自{$vo.section}</label> </div>
+
+                                                    </div>
+                                                    <div class="WB_title  mb10">
+                                                        {$vo.title}
+                                                    </div>
+                                                    <div class="WB_text content">
+
+                                                        <div class="f_l mr10" style="width:160px;height:100px;"><img src="{$vo.cover_photo_sm}" class="img-responsive"></div>
+
+                                                        <div >{$vo.content} </div>
+                                                    </div>
+                                                    <div class="WB_text content_html" style="display:none;">                     
+                                                        <div>{$vo.content_html} </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="WB_feed_handle">
+                                                    <ul>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-star-empty"></span><em>收藏</em> </span> </a> </li>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-comment"></span><em>143</em> </span> </a> </li>
+                                                        <li> <a class="S_txt2" href="javascript:void(0);"> <span class="S_line1"> <span class="glyphicon glyphicon-thumbs-up"></span><em>156</em> </span> </a> </li>
+                                                        <li class="zhankai"> <a class="S_txt2" href="javascript:void(0);"> <span class="glyphicon glyphicon-chevron-down"></span><em>展开</em> </a> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/if}
+                                        {/volist}
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-xs-12">
+                                        <button class="btn  btn-block"><i class="fa fa-spinner fa-spin"></i> 显示更多</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="islogin mb10" style="height:49px; line-height: 49px;">
+                                    <a target="_blank" href="{:url('index/Index/editor',array('section'=>4))}" class=" btn btn-default form-control" style="height:49px;  font-size: 16px; line-height:36px;"><i class="fa fa-pencil fa-fw"></i>写文章</a>
+                                </div>
+                                <div class="rightmod_news">
+                                    <div class="rightmod_news_top">
+                                        <div class="line_left col-xs-4"></div>
+                                        <div class="line_center col-xs-4"></div>
+                                        <div class="line_right col-xs-4"></div>
+                                    </div>
+                                    <div class="rightmod_news_head">
+                                        <h1>社区新鲜事</h1>
+                                    </div>
+                                    <div class="rightmod_news_con">
+                                        <ul>
+                                            <li>
+                                                <div class="rightmod_news_item"> <img src="__STATIC__/zuochuang/img/pic1.jpg">
+                                                    <h1>关于论坛发展的各种建设性意见，以及论坛的发</h1>
+                                                    <span>2018-01-13  13:20</span> </div>
+                                            </li>
+                                            <li>
+                                                <div class="rightmod_news_item"> <img src="__STATIC__/zuochuang/img/pic2.jpg">
+                                                    <h1>关于论坛发展的各种建设性意见，以及论坛的发</h1>
+                                                    <span>2018-01-13  13:20</span> </div>
+                                            </li>
+                                            <li>
+                                                <div class="rightmod_news_item"> <img src="__STATIC__/zuochuang/img/pic3.jpg">
+                                                    <h1>关于论坛发展的各种建设性意见，以及论坛的发</h1>
+                                                    <span>2018-01-13  13:20</span> </div>
+                                            </li>
+                                        </ul>
+                                        <div class="rightmod_news_more"> <a href="#">查看更多</a> </div>
+                                    </div>
+                                </div>
+                                <div class="rightmod_user">
+                                    <div class="rightmod_news_top">
+                                        <div class="line_left col-xs-4"></div>
+                                        <div class="line_center col-xs-4"></div>
+                                        <div class="line_right col-xs-4"></div>
+                                    </div>
+                                    <div class="rightmod_news_head">
+                                        <h1>人气会员</h1>
+                                    </div>
+                                    <div class="rightmod_user_con">
+                                        <ul>
+                                            <li>
+                                                <div class="rightmod_user_item"> <img src="__STATIC__/zuochuang/img/head.png">
+                                                    <h1>编程高手</h1>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="rightmod_user_item"> <img src="__STATIC__/zuochuang/img/head.png">
+                                                    <h1>编程高手</h1>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="rightmod_user_item"> <img src="__STATIC__/zuochuang/img/head.png">
+                                                    <h1>编程高手</h1>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="rightmod_user_item"> <img src="__STATIC__/zuochuang/img/head.png">
+                                                    <h1>编程高手</h1>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="rightmod_news_more"> <a href="#">换一组</a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" >
+                    <div class="modal-content animated bounceInRight">
+                        <div class="row">
+                            <div class="col-xs-12 ">
+                                <div class="row text-center mb47 mt30 ">
+                                    <div class="col-xs-10 col-xs-offset-1">
+                                        <div class="col-xs-6 account_login">
+                                            <h1>账号登陆</h1>
+                                        </div>
+                                        <div class="col-xs-6 save_login">
+                                            <h1>安全登陆</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-10 col-xs-offset-1">
+                                    <hr style="margin-top:-47px;" />
+                                </div>
+                                <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 mt-20" id="login_modalbox">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-xs-10 col-xs-offset-1 ">
+                                                <div class="input-group"> <span class="input-group-addon bg_white"><i class="fa fa-user"></i></span>
+                                                    <input type="text" placeholder="做创号/用户名" class="form-control Musername">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-10 col-xs-offset-1 ">
+                                                <div class="input-group"> <span class="input-group-addon bg_white"><i class="fa fa-lock"></i></span>
+                                                    <input type="password"  placeholder="密码" class="form-control Muserpassword">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-10 col-xs-offset-1 ">
+                                                <input type="button" name="MtoLogin" class="form-control btn btn-warning" id="" value="登陆">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-10">
+                                            <div class="col-xs-4 col-xs-offset-1" > <a href="#">忘记密码?</a> </div>
+                                            <div class="col-xs-4 col-xs-offset-2 text-right" > <a href="#">注册帐号</a> </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-xs-10 col-xs-offset-1 mt-30 mb15" id="img_modalbox" > <img src="__STATIC__/zuochuang/img/getqrcode.jpg" class="center-block img-responsive img-thumbnail" /> </div>
+                            </div>
+                            <div class="col-xs-10 col-xs-offset-1">
+                                <hr  />
+                            </div>
+                            <div class="" id="login_modalmsg">
+                                <div class="col-xs-10 col-xs-offset-1">
+                                    <h1 style="float:left">快速登陆：</h1>
+                                    <div class="login_box" > <span><img src="__STATIC__/zuochuang/img/ico08.png"></span> <span><img src="__STATIC__/zuochuang/img/ico09.png"></span> <span><img src="__STATIC__/zuochuang/img/ico10.png"></span> </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-10 col-xs-offset-1" id="img_modalmsg">
+                                <div class="col-xs-12 text-center " >
+                                    <h1>请打开做创客户端“扫一扫”</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {include file="/common/footer"}
+        </div>
+        <div id="back-to-top"  class="back-to-top" data-placement="top" data-toggle="tooltip"  title="回到顶部"></div>
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/jquery.min.js"></script> 
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="__STATIC__/zuochuang/js/bar.js"></script> 
+        <script src="__STATIC__/js/layer/layer.js"></script> 
+        <script>
+            var islogin = {$isLogin};
+            if (islogin) {
+                $('#login_win').css('display', 'none');
+                $('.islogin').css('display', 'block');
+                $('.nologin').css('display', 'none');
+            } else {
+                $('#login_win').css('display', 'block');
+                $('.nologin').css('display', '');
+                $('.islogin').css('display', 'none');
+            }
+            ;
+
+            function changeMargin() {
+                var docWidth = document.body.clientWidth;
+                if (docWidth > 1185) {
+                    $('.rightmod_news').addClass("myAffix_news");
+                    $('.myAffix_news').affix({
+                        offset: {
+                            top: 1350
+                        }
+                    })
+                } else {
+                    $('.myAffix_news').affix({
+                        offset: {
+                            top: 9999
+                        }
+                    })
+                    $('.rightmod_news').removeClass("myAffix_news");
+
+                }
+            }
+
+            changeMargin();
+
+            window.onresize = function () {
+                changeMargin();
+            };
+
+            $('.account_login').click(function () {
+                $('.save_login').css("border-bottom", "");
+                $(this).css("border-bottom", "3px solid #ffda44");
+
+                $("#img_box").css("display", "none");
+                $("#img_msg").css("display", "none");
+                $("#img_modalbox").css("display", "none");
+                $("#img_modalmsg").css("display", "none");
+
+                $("#login_box").css("display", "");
+                $("#login_msg").css("display", "");
+                $("#login_modalbox").css("display", "");
+                $("#login_modalmsg").css("display", "");
+            });
+            $('.save_login').click(function () {
+                $('.account_login').css("border-bottom", "none");
+                $(this).css("border-bottom", "3px solid #ffda44");
+
+                $("#img_box").css("display", "block");
+                $("#img_msg").css("display", "block");
+                $("#img_modalbox").css("display", "block");
+                $("#img_modalmsg").css("display", "block");
+
+                $("#login_box").css("display", "none");
+                $("#login_msg").css("display", "none");
+                $("#login_modalbox").css("display", "none");
+                $("#login_modalmsg").css("display", "none");
+            });
+
+            $(function () {
+                $("[data-toggle='tooltip']").tooltip();
+            });
+
+            $(window).scroll(function () {
+                var value = $(this).scrollTop();
+                if ($(this).scrollTop() > 0) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+                if (!isMobile.any() && !isMobile.iPad())
+                {
+                    if (value > 1650)
+                    {
+                        $('.rightmod_user').addClass("show");
+                    } else {
+                        $('.rightmod_user').removeClass("show");
+                    }
+                }
+
+            });
+
+            $('#back-to-top').click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+
+            $("input[name='toLogin']").click(function () {
+                var username = $('.username').val();
+                var pwd = $('.userpassword').val();
+
+                $.ajax({
+                    url: '/index.php/index/Index/checkLogin',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {user_name: username, user_password: pwd},
+                    success: function (res) {
+                        console.log(res)
+                        if (res.status == 1)
+                        {
+
+                            top.location.href = res.url;
+                        } else
+                        {
+                            layer.open({
+                                title: '提示',
+                                icon: 2,
+                                content: res.msg,
+                            });
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.open({
+                            title: '提示',
+                            icon: 2,
+                            content: '网络失败，请刷新页面后重试'
+                        });
+                    }
+                })
+            });
+
+            $("input[name='MtoLogin']").click(function () {
+                var username = $('.Musername').val();
+                var pwd = $('.Muserpassword').val();
+
+                $.ajax({
+                    url: '/index.php/index/Index/checkLogin',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {user_name: username, user_password: pwd},
+                    success: function (res) {
+                        console.log(res)
+                        if (res.status == 1)
+                        {
+
+                            top.location.href = res.url;
+                        } else
+                        {
+                            layer.open({
+                                title: '提示',
+                                icon: 2,
+                                content: res.msg,
+                            });
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.open({
+                            title: '提示',
+                            icon: 2,
+                            content: '网络失败，请刷新页面后重试'
+                        });
+                    }
+                })
+            });
+
+            var oEmail = document.getElementById('email');
+            var oEmailBox = document.getElementById('email_box');
+            var oSetting = document.getElementById('setting');
+            var oSettingBox = document.getElementById('setting_box');
+            var timer1 = null;
+            oEmailBox.onmouseover = oEmail.onmouseover = function ()
+            {
+                console.log("jingru");
+                clearTimeout(timer1);
+                oSettingBox.style.display = 'none';
+                oEmailBox.style.display = 'block';
+            };
+            oEmailBox.onmouseout = oEmail.onmouseout = function ()
+            {
+                console.log("yichu");
+                timer1 = setTimeout(function () {
+                    oEmailBox.style.display = 'none';
+                }, 500);
+            };
+
+            oSettingBox.onmouseover = oSetting.onmouseover = function ()
+            {
+                console.log("jingru");
+                clearTimeout(timer1);
+                oEmailBox.style.display = 'none';
+                oSettingBox.style.display = 'block';
+            };
+            oSettingBox.onmouseout = oSetting.onmouseout = function ()
+            {
+                console.log("yichu");
+                timer1 = setTimeout(function () {
+                    oSettingBox.style.display = 'none';
+                }, 500);
+            };
+
+            $('.zhankai').click(function () {
+                var text = $(this).children().children().closest('em').html();
+
+                if (text == "展开")
+                {
+                    $(this).children().html('<span class="glyphicon glyphicon-chevron-up"></span><em>收起</em>');
+
+                    $(this).parent().parent().prev().children().closest('.content').css("display", "none");
+
+                    $(this).parent().parent().prev().children().closest('.content_html').css("display", "block");
+                } else
+                {
+                    $(this).children().html('<span class="glyphicon glyphicon-chevron-down"></span><em>展开</em>');
+
+                    $(this).parent().parent().prev().children().closest('.content').css("display", "block");
+
+                    $(this).parent().parent().prev().children().closest('.content_html').css("display", "none");
+                }
+            });
+
+
+
+
+        </script>
+    </body>
+</html>
